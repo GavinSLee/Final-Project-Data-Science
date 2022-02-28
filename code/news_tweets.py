@@ -1,18 +1,21 @@
 from json.tool import main
-import requests
 import os 
-import json  
-import snscrape
-import pandas as pd 
+
+"""
+This file is responsible for scraping covid related tweets from CNN and Fox News from January 2020 - December 2021. We use the library snscrape to gather the tweets, and this library simplifies our work by no longer needing to use a web browser based scraper (like selenium) to gather the tweets. All scraped data is written to cnn_tweets.json and fox_tweets.json. 
+
+To run this file, use the command: python news_tweets.py in your shell. 
+"""
 
 # 1. Define COVID related keywords to pass to our search query. 
 COVID_KEYWORDS = ["coronavirus", "covid", "covid19", "covid-19", "sarscov2", "sars cov 2", "wuhan"]
+VARIANTS_KEYWORDS = ["delta", "delta variant", "omicron", "omicron variant", "variant"]
 PANDEMIC_KEYWORDS = ["pandemic", "quarantine", "self-quarantine", "self quarantine", "self-isolation", "self isolation", "lockdown", "social distancing", "flattening the curve", "flatten the curve", "herd immunity", "sympatomatic", "asymptomatic"] 
 VACCINE_KEYWORDS = ["moderna", "Pfizer", "johnson & johnson", "vaccine"]
 ITEMS_KEYWORDS = ["nasks", "n95", "hand sanitizer", "toilet paper"] 
 PEOPLE_KEYWORDS = ["trump", "fauci", "biden", "harris"]
 
-FINAL_KEYWORDS = COVID_KEYWORDS + PANDEMIC_KEYWORDS + VACCINE_KEYWORDS + ITEMS_KEYWORDS 
+FINAL_KEYWORDS = COVID_KEYWORDS + VARIANTS_KEYWORDS + PANDEMIC_KEYWORDS + VACCINE_KEYWORDS + ITEMS_KEYWORDS
 
 # 2. Define news outlets from which we want to scrape covid related tweets from. 
 NEWS_OUTLETS = ["FoxNews", "CNN"]
