@@ -1,10 +1,10 @@
 import requests
 import os
 import json
+import pandas as pd 
 
 # To set your enviornment variables in your terminal run the following line:
 bearer_token = "AAAAAAAAAAAAAAAAAAAAABtGZgEAAAAAa7ycbW8F%2FKadNlE8SvMkZJgjxK0%3DHLQ6jNZL9RAA5zjAdEJxZT7X2bJZoDAXZvNaYC2VmR7SnEItxj"
-
 
 def create_url():
     tweet_fields = "tweet.fields=lang,author_id"
@@ -43,12 +43,24 @@ def connect_to_endpoint(url):
         )
     return response.json()
 
+def get_ids(json_path):
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+        # Gets list of tweets from path 
+        tweets = data["tweets"]
+    
+    ids = []
+    for tweet in tweets:
+        id = tweet["id"]
+        ids.append(id) 
+    return ids 
 
 def main():
-    url = create_url()
-    json_response = connect_to_endpoint(url)
-    print(json.dumps(json_response, indent=4, sort_keys=True))
-
+    # url = create_url()
+    # json_response = connect_to_endpoint(url)
+    # print(json.dumps(json_response, indent=4, sort_keys=True))
+    json_path = './data_clean/fox_tweets.json'
+    ids = get_ids(json_path) 
 
 if __name__ == "__main__":
     main()

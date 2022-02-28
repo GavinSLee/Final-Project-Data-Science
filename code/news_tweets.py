@@ -1,4 +1,6 @@
+from asyncio.proactor_events import _ProactorWritePipeTransport
 from json.tool import main
+import json 
 import os 
 
 """
@@ -44,15 +46,45 @@ def scrape_tweets(keywords, news_outlets, beginning_dates, end_dates):
                 news_outlet = "from:" + outlet + " "
                 until = "until:" + end_date 
                 if outlet == "CNN":
-                    output = " >> " + "cnn_tweets.json"
+                    output = " >> " + "test_tweets.jsonl"
                 else:
-                    output = " >> " + "fox_tweets.json"
+                    output = " >> " + "test_tweets.jsonl"
 
                 search_command = "\"" + query + news_outlet + until + "\""
                 final_command = base_command + search_command + output 
                 print(final_command) 
                 os.system(final_command) 
-                # return 
+
+# Need to do some preprocessing as there's too much information 
+def clean_jsonl_file(dirty_path, clean_path):
+    with open(dirty_path, 'r') as f:
+        json_list = list(f)
+
+    clean_tweets = {"tweets": []}    
+    keys_to_remove = ["_type", "user", "source", "sourceUrl", "sourceLabel", "outlinks", "tcooutlinks"]    
+    for json_str in json_list:
+        curr_tweet = json.loads(json_str) 
+        for key in keys_to_remove:
+            curr_tweet.pop(key)
+        clean_tweets["tweets"].append(curr_tweet) 
+    
+    with open(clean_path, 'w') as f:
+        json.dump(clean_tweets, f) 
+
+def clean_files():
+    dirty_paths = ['./data_dirty/fox_tweets.jsonl', './data_dirty/cnn_tweets.jsonl']
+    clean_paths = ['./data_clean/fox_tweets.json', './data_clean/cnn_tweets.json']
+
+    for i in range(len(dirty_paths)):
+        curr_dirty_path = dirty_paths[i] 
+        curr_clean_path = clean_paths[i] 
+        clean_jsonl_file(curr_dirty_path, curr_clean_path)
+
+    print("Cleaning Finished.")
+
+def main(): 
+    # scrape_tweets(FINAL_KEYWORDS, NEWS_OUTLETS, BEGINNING_DATES_2021, END_DATES_2021)
+    clean_files() 
 
 if __name__ == "__main__":
-    scrape_tweets(FINAL_KEYWORDS, NEWS_OUTLETS, BEGINNING_DATES_2021, END_DATES_2021)
+    main() 
