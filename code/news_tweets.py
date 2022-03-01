@@ -49,25 +49,7 @@ def scrape_tweets(news_outlet, keywords, begin_dates, end_dates):
             final_command = base_command + search_command + output 
             print(final_command)
             os.system(final_command) 
-    
-def parse_jsonl_file(dirty_path, clean_path, months_mapping):
 
-    with open(dirty_path, 'r') as dirty_json_file:
-        json_list = list(dirty_json_file) 
-    
-    keys_to_remove = ["_type", "user", "source", "sourceUrl", "sourceLabel", "tcooutlinks", "media", "retweetedTweet", "quotedTweet", "inReplyToTweetId", "inReplyToUser", "mentionedUsers", "coordinates", "place", "cashtags", "renderedContent"]
-    tweets_list = []
-    for json_str in json_list:
-        json_line = json.loads(json_str) 
-        for key in keys_to_remove:
-            json_line.pop(key) 
-        date = json_line["date"]
-        date = date[0:7] 
-        json_line["month"] = months_mapping[date]
-        tweets_list.append(json_line) 
-    
-    with open(clean_path, 'w') as clean_json_file:
-        json.dump(tweets_list, clean_json_file) 
         
 def get_covid_keywords():
     """
@@ -109,24 +91,18 @@ def get_dates():
     months_2021 = {"2021-01": "January 2021", "2021-02": "February 2021", "2021-03": "March 2021", "2021-04":"April 2021", "2021-05": "May 2021", "2021-06": "June 2021", "2021-07": "July 2021", "2021-08": "August 2021", "2021-09": "September 2021", "2021-10": "October 2021", 
     "2021-11" : "November 2021", "2021-12" : "December 2021"}
 
-    months_mapping = months_2020 | months_2021 
-
-    return begin_dates, end_dates, months_mapping
+    return begin_dates, end_dates
 
 def main(): 
     
     final_keywords = get_covid_keywords()
-    begin_dates, end_dates, months_mapping = get_dates() 
+    begin_dates, end_dates = get_dates() 
 
     # scrape_tweets("FoxNews", final_keywords, begin_dates["2020"], end_dates["2020"])
     # scrape_tweets("CNN", final_keywords, begin_dates["2020"], end_dates["2020"])
 
     # scrape_tweets("FoxNews", final_keywords, begin_dates["2021"], end_dates["2021"])
     # scrape_tweets("CNN", final_keywords, begin_dates["2021"], end_dates["2021"])
-
-    dirty_path = './data_dirty/cnn_tweets_2020_dirty.jsonl'
-    clean_path = './data_clean/cnn_tweets_2020_clean.json'
-    parse_jsonl_file(dirty_path, clean_path, months_mapping)
 
 if __name__ == "__main__":
     main() 
