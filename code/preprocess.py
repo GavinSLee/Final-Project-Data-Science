@@ -1,6 +1,7 @@
 import json
 
 terms = [
+  # these covid related terms are from here: https://www.webmd.com/lung/coronavirus-glossary#5
   "aerosol", 
   "antibody", 
   "antibody test",
@@ -10,9 +11,47 @@ terms = [
   "convalescent plasma therapy",
   "diagnostic test",
   "drive-thru testing",
+  "droplet",
+  "emergency use authorization",
+  "endemic",
+  "Epidemic",
+  "Flattening the curve",
+  "Herd immunity",
+  "Hydroxychloroquine",
+  "Incubation period",
+  "Infusion",
+  "N95 respirator",
+  "N95",
+  "N95 mask",
+  "Outbreak",
+  "Pandemic",
+  "Paxlovid",
+  "PCR test",
+  "PCR",
+  "Personal protective equipment",
+  "PPE",
+  "Pre-symptomatic",
+  "Quarantine",
+  "R0",
+  "Remdesivir",
+  "Veklury",
+  "Self-isolation",
+  "Serology test",
+  "Social distancing",
+  "State of emergency",
+  "Swab test",
+  "Tocilizumab",
+  "Actemra",
+  "Trial",
+  "Vaccine",
+  "Variant",
+  "Ventilator",
+  "Viral load",
+  "Viral shedding",
+  "Viral test",
 
   # TODO: get as many terms as you can!!!
-  # 
+  # For instance, political words like Biden / Trump, organizations like CDC, etc
 ]
 
 
