@@ -146,7 +146,7 @@ def main():
     tweets_list = data["tweets"]
 
     # For each reply, get the data. 
-    out_file = open("./data_clean/sample.json", "w") 
+    out_file = open("./data_clean/sample.jsonl", "w") 
     resume = False 
     for tweet_dict in tweets_list:
         news_tweet_id = str(tweet_dict["id"])
