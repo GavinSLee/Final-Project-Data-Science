@@ -1,6 +1,7 @@
 import json
 
 terms = [
+  # these covid related terms are from here: https://www.webmd.com/lung/coronavirus-glossary#5
   "aerosol", 
   "antibody", 
   "antibody test",
@@ -10,9 +11,47 @@ terms = [
   "convalescent plasma therapy",
   "diagnostic test",
   "drive-thru testing",
+  "droplet",
+  "emergency use authorization",
+  "endemic",
+  "Epidemic",
+  "Flattening the curve",
+  "Herd immunity",
+  "Hydroxychloroquine",
+  "Incubation period",
+  "Infusion",
+  "N95 respirator",
+  "N95",
+  "N95 mask",
+  "Outbreak",
+  "Pandemic",
+  "Paxlovid",
+  "PCR test",
+  "PCR",
+  "Personal protective equipment",
+  "PPE",
+  "Pre-symptomatic",
+  "Quarantine",
+  "R0",
+  "Remdesivir",
+  "Veklury",
+  "Self-isolation",
+  "Serology test",
+  "Social distancing",
+  "State of emergency",
+  "Swab test",
+  "Tocilizumab",
+  "Actemra",
+  "Trial",
+  "Vaccine",
+  "Variant",
+  "Ventilator",
+  "Viral load",
+  "Viral shedding",
+  "Viral test",
 
   # TODO: get as many terms as you can!!!
-  # 
+  # For instance, political words like Biden / Trump, organizations like CDC, etc
 ]
 
 
@@ -27,10 +66,14 @@ def save_tweets_to_json(path, tweets):
       json.dump(tweets, outfile)
       print("Saved to " + path)
 
+def remove_duplicate_tweets():
+  # TODO: remove duplicate tweets
+  pass
+
 def assign_keywords(tweets):
   for tweet in tweets:
     content = tweet["content"].lower()
-    keywords = []
+    keywords = set()
     for term in terms:
       term = term.lower()
       firstIndex = 0
@@ -38,8 +81,8 @@ def assign_keywords(tweets):
       for i in range(len(content) - lastIndex):
         substring = content[i + firstIndex : i + lastIndex]
         if substring == term:
-          keywords.append(term)
-    tweet["keywords"] = keywords
+          keywords.add(term)
+    tweet["keywords"] = list(keywords)
   return tweets
 
     
