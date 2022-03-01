@@ -31,7 +31,7 @@ def scrape_tweets(news_outlet, keywords, begin_dates, end_dates):
         end_date = end_dates[i] 
 
         # Snscrape uses a CLI command to scrape tweets. The parameters --jsonl writes the scraped data to a json file, and --progress prints scraped data progress. 
-        base_command = "snscrape --jsonl --progress --max-results 300 --since " + begin_date + " twitter-search "
+        base_command = "snscrape --jsonl --progress --max-results 150 --since " + begin_date + " twitter-search "
         if news_outlet == "CNN":
             path = "./data_dirty/cnn_tweets_2021_dirty.jsonl"  
         else:
@@ -51,12 +51,12 @@ def scrape_tweets(news_outlet, keywords, begin_dates, end_dates):
             os.system(final_command) 
     
 def parse_jsonl_file(dirty_path, clean_path, months_mapping):
-    tweets_dict = {"tweets":[]} 
 
     with open(dirty_path, 'r') as dirty_json_file:
         json_list = list(dirty_json_file) 
     
     keys_to_remove = ["_type", "user", "source", "sourceUrl", "sourceLabel", "tcooutlinks", "media", "retweetedTweet", "quotedTweet", "inReplyToTweetId", "inReplyToUser", "mentionedUsers", "coordinates", "place", "cashtags", "renderedContent"]
+    tweets_list = []
     for json_str in json_list:
         json_line = json.loads(json_str) 
         for key in keys_to_remove:
@@ -64,10 +64,10 @@ def parse_jsonl_file(dirty_path, clean_path, months_mapping):
         date = json_line["date"]
         date = date[0:7] 
         json_line["month"] = months_mapping[date]
-        tweets_dict["tweets"].append(json_line)  
+        tweets_list.append(json_line) 
     
     with open(clean_path, 'w') as clean_json_file:
-        json.dump(tweets_dict, clean_json_file) 
+        json.dump(tweets_list, clean_json_file) 
         
 def get_covid_keywords():
     """
@@ -76,15 +76,15 @@ def get_covid_keywords():
     """
     
     # Keywords are separated by category, and then the lists are concatenated at the end to make the final keywords list. 
-    covid_keywords = ["coronavirus", "covid", "covid19", "covid-19", "sarscov2", "sars cov 2", "wuhan"]
-    variants_keywords = ["delta variant", "omicron", "omicron variant", "variant", "variants"]
-    pandemic_keywords = ["pandemic", "quarantine", "self-quarantine", "self quarantine", "self-isolation", "self isolation", "lockdown", "social distancing", "social distance", "flattening the curve", "flatten the curve", "herd immunity", "symptomatic", "asymptomatic"] 
-    vaccine_keywords = ["moderna", "pfizer", "johnson & johnson", "vaccines", "vaccine", "mandates", "mandate"]
-    items_keywords = ["mask", "masks", "n95", "hand sanitizer", "toilet paper"] 
+    covid_keywords = ["coronavirus", "corona virus", "corona", "covid", "covid19", "covid-19", "covid 19", "sarscov2", "sars cov 2", "wuhan virus"]
+    # variants_keywords = ["delta variant", "omicron", "omicron variant", "variant", "variants"]
+    # pandemic_keywords = ["pandemic", "quarantine", "self-quarantine", "self quarantine", "self-isolation", "self isolation", "lockdown", "social distancing", "social distance", "flattening the curve", "flatten the curve", "herd immunity", "symptomatic", "asymptomatic"] 
+    # vaccine_keywords = ["moderna", "pfizer", "johnson & johnson", "vaccines", "vaccine", "mandates", "mandate"]
+    # items_keywords = ["mask", "masks", "n95", "hand sanitizer", "toilet paper"] 
 
-    final_keywords = covid_keywords + variants_keywords + pandemic_keywords + vaccine_keywords + items_keywords 
+    # final_keywords = covid_keywords + variants_keywords + pandemic_keywords + vaccine_keywords + items_keywords 
 
-    return final_keywords 
+    return covid_keywords 
 
 def get_dates():
     """
@@ -124,8 +124,8 @@ def main():
     # scrape_tweets("FoxNews", final_keywords, begin_dates["2021"], end_dates["2021"])
     # scrape_tweets("CNN", final_keywords, begin_dates["2021"], end_dates["2021"])
 
-    dirty_path = './data_dirty/cnn_tweets_2021_dirty.jsonl'
-    clean_path = './data_clean/cnn_tweets_2021_clean.json'
+    dirty_path = './data_dirty/cnn_tweets_2020_dirty.jsonl'
+    clean_path = './data_clean/cnn_tweets_2020_clean.json'
     parse_jsonl_file(dirty_path, clean_path, months_mapping)
 
 if __name__ == "__main__":
