@@ -1,3 +1,4 @@
+from enum import unique
 import json
 
 terms = [
@@ -66,9 +67,15 @@ def save_tweets_to_json(path, tweets):
       json.dump(tweets, outfile)
       print("Saved to " + path)
 
-def remove_duplicate_tweets():
+def remove_duplicate_tweets(tweets):
   # TODO: remove duplicate tweets
-  pass
+  id = set()
+  unique_tweets = []
+  for tweet in tweets:
+    if tweet["id"] not in id:
+      unique_tweets.append(tweet)
+      id.add(tweet["id"])
+  return unique_tweets
 
 def assign_keywords(tweets):
   for tweet in tweets:
@@ -87,12 +94,16 @@ def assign_keywords(tweets):
 
     
 def main():
-  JSON_FILE = "cnn_tweets_2020_clean.json"
-  ROOT = "../data_clean/"
-  PATH = ROOT + JSON_FILE
-  tweets = get_tweets_from_json(PATH)
+  #raw json we are reading in 
+  READ_PATH = "../data_clean/cnn_tweets_2020_clean.json"
+
+  #where we are storing preprocessed json
+  SAVE_PATH = "new_preprocessing.json"
+
+  tweets = get_tweets_from_json(READ_PATH)
+  tweets = remove_duplicate_tweets(tweets)
   tweets = assign_keywords(tweets)
-  save_tweets_to_json("preprocessing.json", tweets)
+  save_tweets_to_json(SAVE_PATH, tweets)
 
 
 if __name__ == "__main__":
