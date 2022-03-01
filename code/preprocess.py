@@ -66,10 +66,14 @@ def save_tweets_to_json(path, tweets):
       json.dump(tweets, outfile)
       print("Saved to " + path)
 
+def remove_duplicate_tweets():
+  # TODO: remove duplicate tweets
+  pass
+
 def assign_keywords(tweets):
   for tweet in tweets:
     content = tweet["content"].lower()
-    keywords = []
+    keywords = set()
     for term in terms:
       term = term.lower()
       firstIndex = 0
@@ -77,8 +81,8 @@ def assign_keywords(tweets):
       for i in range(len(content) - lastIndex):
         substring = content[i + firstIndex : i + lastIndex]
         if substring == term:
-          keywords.append(term)
-    tweet["keywords"] = keywords
+          keywords.add(term)
+    tweet["keywords"] = list(keywords)
   return tweets
 
     
