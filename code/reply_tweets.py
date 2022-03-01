@@ -16,12 +16,12 @@ def bearer_oauth(r):
     r.headers["User-Agent"] = "v2TweetLookupPython"
     return r
 
-def create_url(id):
+def create_url(ids_param):
     """
     Creates the URL endpoint to gather our data from. 
     """
     tweet_fields = "tweet.fields=lang,author_id,conversation_id,public_metrics"
-    ids = "ids=" + id 
+    ids = "ids=" + ids_param
     url = "https://api.twitter.com/2/tweets?{}&{}".format(ids, tweet_fields)
     return url
 
@@ -103,27 +103,36 @@ def get_reply_id(reply_url):
     
     return tweet_id    
 
-def parse_response(root_id, response):
+def parse_reply_ids(reply_ids_list):
+    """
+    Parses the reply ids into the following format: "id1,id2,id3,...,idn"
+    """
+    ids_param = ""
+    for reply_id in reply_ids_list:
+        ids_param += reply_id + "," 
+
+    return ids_param[:-1]
+
+def parse_response(root_id, reply_dict):
     """
     Parse the response dictionary that the Twitter API returns. Get only shallow replies (i.e. replies that are direct to the news tweet itself). 
     """ 
 
-    response_dict = response["data"][0]
-    conversation_id = response_dict["conversation_id"]
+    conversation_id = reply_dict["conversation_id"]
     
     # Drop the response if it's not a shallow tweet. 
     if conversation_id != root_id: 
         return None 
     else: 
-        reply_id = response_dict['id']
-        conversation_id = response_dict['conversation_id']
-        author_id = response_dict['author_id']
-        text = response_dict['text']
-        lang = response_dict['lang']
-        retweet_count = response_dict['public_metrics']['retweet_count']
-        reply_count = response_dict['public_metrics']['reply_count']
-        like_count = response_dict['public_metrics']['like_count']
-        quote_count = response_dict['public_metrics']['quote_count']
+        reply_id = reply_dict['id']
+        conversation_id = reply_dict['conversation_id']
+        author_id = reply_dict['author_id']
+        text = reply_dict['text']
+        lang = reply_dict['lang']
+        retweet_count = reply_dict['public_metrics']['retweet_count']
+        reply_count = reply_dict['public_metrics']['reply_count']
+        like_count = reply_dict['public_metrics']['like_count']
+        quote_count = reply_dict['public_metrics']['quote_count']
 
         parsed_response = {"id" : reply_id, "conversation_id" : conversation_id, "author_id" : author_id, "text" : text, "lang" : lang, "retweet_count" : retweet_count, "reply_count" : reply_count, "like_count" : like_count, "quote_count" : quote_count}
         
@@ -143,21 +152,29 @@ def main():
         news_tweet_id = str(tweet_dict["id"])
      
         reply_ids_list = get_reply_ids_list(news_tweet_id)
-        print(reply_ids_list) 
-        for reply_id in reply_ids_list: 
-            url = create_url(reply_id)
-            json_response = connect_to_endpoint(url)
-            parsed_response = parse_response(news_tweet_id, json_response)  
+
+        # Gets the top 20 replies 
+        if len(reply_ids_list) > 20:
+            reply_ids_list = reply_ids_list[0:20]
+
+        ids_param = parse_reply_ids(reply_ids_list) 
+        print(ids_param) 
+
+        url = create_url(ids_param)
+        json_response = connect_to_endpoint(url)
+        replies_data_list = json_response["data"]
+
+        for reply_dict in replies_data_list:
+            parsed_response = parse_response(news_tweet_id, reply_dict)  
             if parsed_response == None: 
                 continue 
             print(parsed_response) 
             json.dump(parsed_response, out_file) 
             out_file.write('\n')
-            time.sleep(3) 
+
+        time.sleep(10) 
 
     out_file.close() 
-
-
 
 
 if __name__ == "__main__":
