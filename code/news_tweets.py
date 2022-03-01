@@ -77,10 +77,10 @@ def get_covid_keywords():
     
     # Keywords are separated by category, and then the lists are concatenated at the end to make the final keywords list. 
     covid_keywords = ["coronavirus", "covid", "covid19", "covid-19", "sarscov2", "sars cov 2", "wuhan"]
-    variants_keywords = ["delta variant", "omicron", "omicron variant", "variant", "variants"]
-    pandemic_keywords = ["pandemic", "quarantine", "self-quarantine", "self quarantine", "self-isolation", "self isolation", "lockdown", "social distancing", "social distance", "flattening the curve", "flatten the curve", "herd immunity", "symptomatic", "asymptomatic"] 
-    vaccine_keywords = ["moderna", "pfizer", "johnson & johnson", "vaccines", "vaccine", "mandates", "mandate"]
-    items_keywords = ["mask", "masks", "n95", "hand sanitizer", "toilet paper"] 
+    # variants_keywords = ["delta variant", "omicron", "omicron variant", "variant", "variants"]
+    # pandemic_keywords = ["pandemic", "quarantine", "self-quarantine", "self quarantine", "self-isolation", "self isolation", "lockdown", "social distancing", "social distance", "flattening the curve", "flatten the curve", "herd immunity", "symptomatic", "asymptomatic"] 
+    # vaccine_keywords = ["moderna", "pfizer", "johnson & johnson", "vaccines", "vaccine", "mandates", "mandate"]
+    # items_keywords = ["mask", "masks", "n95", "hand sanitizer", "toilet paper"] 
 
     final_keywords = covid_keywords + variants_keywords + pandemic_keywords + vaccine_keywords + items_keywords 
 
