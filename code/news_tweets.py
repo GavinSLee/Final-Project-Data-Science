@@ -12,7 +12,7 @@ The data is first written as jsonl (json lines) files in the directory: data_dir
 To run this file, use the command: python code/news_tweets.py in your shell. 
 """
 
-def scrape_tweets(news_outlet, keywords, begin_dates, end_dates):
+def scrape_tweets(news_outlet, path, keywords, begin_dates, end_dates):
     """
     This is the main method that scrapes tweets using the snscrape library. The snscrape library mainly uses a CLI; however, we can make use of python's OS package to scrape more programmatically. We iterate by month. 
 
@@ -32,11 +32,6 @@ def scrape_tweets(news_outlet, keywords, begin_dates, end_dates):
 
         # Snscrape uses a CLI command to scrape tweets. The parameters --jsonl writes the scraped data to a json file, and --progress prints scraped data progress. 
         base_command = "snscrape --jsonl --progress --max-results 150 --since " + begin_date + " twitter-search "
-        if news_outlet == "CNN":
-            path = "./data_dirty/cnn_tweets_2021_dirty.jsonl"  
-        else:
-            path = "./data_dirty/fox_tweets_2021_dirty.jsonl"
-
         # Gather covid related tweets per our defined keywords, for each news outlet. 
         for keyword in keywords:
             query_param = keyword + " "
@@ -50,59 +45,26 @@ def scrape_tweets(news_outlet, keywords, begin_dates, end_dates):
             print(final_command)
             os.system(final_command) 
 
-        
-def get_covid_keywords():
-    """
-    Defines keywords that we pass to the search query.
-    returns: final keywords (list) 
-    """
-    
-    # Keywords are separated by category, and then the lists are concatenated at the end to make the final keywords list. 
-    covid_keywords = ["coronavirus", "corona virus", "corona", "covid", "covid19", "covid-19", "covid 19", "sarscov2", "sars cov 2", "wuhan virus"]
-    # variants_keywords = ["delta variant", "omicron", "omicron variant", "variant", "variants"]
-    # pandemic_keywords = ["pandemic", "quarantine", "self-quarantine", "self quarantine", "self-isolation", "self isolation", "lockdown", "social distancing", "social distance", "flattening the curve", "flatten the curve", "herd immunity", "symptomatic", "asymptomatic"] 
-    # vaccine_keywords = ["moderna", "pfizer", "johnson & johnson", "vaccines", "vaccine", "mandates", "mandate"]
-    # items_keywords = ["mask", "masks", "n95", "hand sanitizer", "toilet paper"] 
+def main(): 
 
-    # final_keywords = covid_keywords + variants_keywords + pandemic_keywords + vaccine_keywords + items_keywords 
-
-    return covid_keywords 
-
-def get_dates():
-    """
-    Gets a list of dates that we want to provide the search query for. 
-    returns: begin_dates, end_dates, months 
-    """
-
-    # Beginning dates 
+    # Begin dates 
     begin_dates_2020 = ["2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01", "2020-05-01", "2020-06-01", "2020-07-01", "2020-08-01", "2020-09-01", "2020-10-01", "2020-11-01", "2020-12-01"]
     begin_dates_2021 = ["2021-01-01", "2021-02-01", "2021-03-01", "2021-04-01", "2021-05-01", "2021-06-01", "2021-07-01", "2021-08-01", "2021-09-01", "2021-10-01", "2021-11-01", "2021-12-01"]
-    begin_dates = {"2020": begin_dates_2020, "2021": begin_dates_2021}
 
     # Ending dates 
     end_dates_2020 = ["2020-01-31", "2020-02-28", "2020-03-31", "2020-04-30", "2020-05-31", "2020-06-30", "2020-07-31", "2020-08-31", "2020-09-30", "2020-10-31", "2020-11-30", "2020-12-31"]
     end_dates_2021 = ["2021-01-31", "2021-02-28", "2021-03-31", "2021-04-30", "2021-05-31", "2021-06-30", "2021-07-31", "2021-08-31", "2021-09-30", "2021-10-31", "2021-11-30", "2021-12-31"]
-    end_dates = {"2020": end_dates_2020, "2021": end_dates_2021}
 
-    # Months 
-    months_2020 = {"2020-01": "January 2020", "2020-02": "February 2020", "2020-03": "March 2020", "2020-04":"April 2020", "2020-05": "May 2020", "2020-06": "June 2020", "2020-07": "July 2020", "2020-08": "August 2020", "2020-09": "September 2020", "2020-10": "October 2020", 
-    "2020-11" : "November 2020", "2020-12" : "December 2020"}
+    # Final Parameters to pass to snscrape calls 
+    COVID_KEYWORDS = ["coronavirus", "corona virus", "corona", "covid", "covid19", "covid-19", "covid 19", "sarscov2", "sars cov 2", "wuhan virus"]
+    BEGIN_DATES = begin_dates_2020 + begin_dates_2021
+    END_DATES = end_dates_2020 + end_dates_2021 
 
-    months_2021 = {"2021-01": "January 2021", "2021-02": "February 2021", "2021-03": "March 2021", "2021-04":"April 2021", "2021-05": "May 2021", "2021-06": "June 2021", "2021-07": "July 2021", "2021-08": "August 2021", "2021-09": "September 2021", "2021-10": "October 2021", 
-    "2021-11" : "November 2021", "2021-12" : "December 2021"}
+    FOX_PATH = './data_dirty/fox_tweets_dirty.jsonl'
+    CNN_PATH = './data_dirty/cnn_tweets_dirty.jsonl'
 
-    return begin_dates, end_dates
-
-def main(): 
-    
-    final_keywords = get_covid_keywords()
-    begin_dates, end_dates = get_dates() 
-
-    # scrape_tweets("FoxNews", final_keywords, begin_dates["2020"], end_dates["2020"])
-    # scrape_tweets("CNN", final_keywords, begin_dates["2020"], end_dates["2020"])
-
-    # scrape_tweets("FoxNews", final_keywords, begin_dates["2021"], end_dates["2021"])
-    # scrape_tweets("CNN", final_keywords, begin_dates["2021"], end_dates["2021"])
+    # scrape_tweets("FoxNews", FOX_PATH, COVID_KEYWORDS, BEGIN_DATES, END_DATES)
+    scrape_tweets("CNN", CNN_PATH, COVID_KEYWORDS, BEGIN_DATES, END_DATES)
 
 if __name__ == "__main__":
     main() 

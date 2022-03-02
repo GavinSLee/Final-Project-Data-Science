@@ -55,15 +55,6 @@ terms = [
   # For instance, political words like Biden / Trump, organizations like CDC, etc
 ]
 
-# Months 
-months_2020 = {"2020-01": "January 2020", "2020-02": "February 2020", "2020-03": "March 2020", "2020-04":"April 2020", "2020-05": "May 2020", "2020-06": "June 2020", "2020-07": "July 2020", "2020-08": "August 2020", "2020-09": "September 2020", "2020-10": "October 2020", 
-"2020-11" : "November 2020", "2020-12" : "December 2020"}
-
-months_2021 = {"2021-01": "January 2021", "2021-02": "February 2021", "2021-03": "March 2021", "2021-04":"April 2021", "2021-05": "May 2021", "2021-06": "June 2021", "2021-07": "July 2021", "2021-08": "August 2021", "2021-09": "September 2021", "2021-10": "October 2021", 
-"2021-11" : "November 2021", "2021-12" : "December 2021"}
-
-months_mapping = months_2020 | months_2021 
-
 def get_tweets_from_json(path):
   with open(path, ) as f:
     tweets = json.load(f)
@@ -99,31 +90,71 @@ def assign_keywords(tweets):
     tweet["keywords"] = list(keywords)
   return tweets
 
-def parse_jsonl_file(dirty_path, clean_path, months_mapping):
+def clean_jsonl_file(read_path, save_path):
+  """
+  Cleans up a dirty jsonl file and writes the data to a clean json file. 
+  """
 
-    with open(dirty_path, 'r') as dirty_json_file:
-        json_list = list(dirty_json_file) 
-    
-    keys_to_remove = ["_type", "user", "source", "sourceUrl", "sourceLabel", "tcooutlinks", "media", "retweetedTweet", "quotedTweet", "inReplyToTweetId", "inReplyToUser", "mentionedUsers", "coordinates", "place", "cashtags", "renderedContent"]
-    tweets_list = []
-    for json_str in json_list:
-        json_line = json.loads(json_str) 
-        for key in keys_to_remove:
-            json_line.pop(key) 
-        date = json_line["date"]
-        date = date[0:7] 
-        json_line["month"] = months_mapping[date]
-        tweets_list.append(json_line) 
-    
-    with open(clean_path, 'w') as clean_json_file:
-        json.dump(tweets_list, clean_json_file) 
+  with open(read_path, 'r') as read_json_file:
+      json_list = list(read_json_file) 
 
-    
+  tweets_list = []
+  for json_str in json_list:
+      json_line = json.loads(json_str) 
+      username = json_line["user"]["username"]
+      json_line["username"] = username 
+      json_line = add_month(json_line) 
+      json_line = remove_keys(json_line)
+      tweets_list.append(json_line) 
+  
+  with open(save_path, 'w') as save_json_file:
+      json.dump(tweets_list, save_json_file) 
+
+def remove_keys(json_line):
+  """
+  Removes unnecessary fields from the JSONL lines. 
+  """
+
+  keys_to_remove = ["_type", "user", "source", "sourceUrl", "sourceLabel", "tcooutlinks", "media", "retweetedTweet", "quotedTweet", "inReplyToTweetId", "inReplyToUser", "mentionedUsers", "coordinates", "place", "cashtags", "renderedContent"]
+  for key in keys_to_remove:
+    json_line.pop(key)
+  return json_line 
+
+def add_month(json_line):
+  """
+  Adds a month field for easier analysis later on. 
+  """
+
+  months_2020 = {"2020-01": "January 2020", "2020-02": "February 2020", "2020-03": "March 2020", "2020-04":"April 2020", "2020-05": "May 2020", "2020-06": "June 2020", "2020-07": "July 2020", "2020-08": "August 2020", "2020-09": "September 2020", "2020-10": "October 2020", 
+  "2020-11" : "November 2020", "2020-12" : "December 2020"}
+
+  months_2021 = {"2021-01": "January 2021", "2021-02": "February 2021", "2021-03": "March 2021", "2021-04":"April 2021", "2021-05": "May 2021", "2021-06": "June 2021", "2021-07": "July 2021", "2021-08": "August 2021", "2021-09": "September 2021", "2021-10": "October 2021", 
+  "2021-11" : "November 2021", "2021-12" : "December 2021"}
+
+  months_mapping = months_2020 | months_2021 
+  date = json_line["date"]
+  date = date[0:7] 
+  json_line["month"] = months_mapping[date]
+  return json_line 
+
+def parse_files():
+  fox_read_path = "./data_dirty/fox_tweets_dirty.jsonl"
+  fox_write_path = "./data_clean/fox_tweets_clean.json"
+  clean_jsonl_file(fox_read_path, fox_write_path) 
+
+  cnn_read_path = "./data_dirty/cnn_tweets_dirty.jsonl"
+  cnn_write_path = "./data_clean/cnn_tweets_clean.json"
+  clean_jsonl_file(cnn_read_path, cnn_write_path)
+
+
 def main():
-  #raw json we are reading in 
+
+  # parse_files() 
+
+  # raw json we are reading in 
   READ_PATH = "../data_clean/cnn_tweets_2020_clean.json"
 
-  #where we are storing preprocessed json
+  # where we are storing preprocessed json
   SAVE_PATH = "new_preprocessing.json"
 
   tweets = get_tweets_from_json(READ_PATH)
