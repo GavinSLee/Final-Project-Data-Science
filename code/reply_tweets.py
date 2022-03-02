@@ -1,4 +1,3 @@
-import snscrape 
 import json 
 import subprocess
 import requests
@@ -38,22 +37,6 @@ def connect_to_endpoint(url):
             )
         )
     return response.json()
-
-# def create_news_tweets_dict(clean_path):
-#     """
-#     Creates a dictionary with the following structure:
-#     {"news tweet id" : [reply_id_1, reply_id_2, ... , reply_id_n]}
-#     """
-#     f = open(clean_path)
-#     data = json.load(f)
-#     tweets_list = data["tweets"]
-
-#     news_tweets_dict = {} 
-#     for tweet in tweets_list:
-#         tweet_id = str(tweet["id"])
-#         news_tweets_dict[tweet_id] = [] 
-    
-#     return news_tweets_dict
 
 def get_reply_ids_list(news_tweet_id):
     """
