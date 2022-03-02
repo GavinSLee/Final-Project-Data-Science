@@ -53,6 +53,31 @@ terms = [
 
   # TODO: get as many terms as you can!!!
   # For instance, political words like Biden / Trump, organizations like CDC, etc
+
+  #politics
+  "biden", 
+  "trump",
+  "white house", 
+  "CDC", 
+  "Center for Disease Control"
+  "WHO", 
+  "World Health Organization", 
+
+  #transportations
+  "Airport", 
+  "Bus", 
+  "Public Transportation", 
+  
+  #Location
+  "USA",
+  "United States",
+  "UK", 
+  "United Kingdom", 
+  "Germany", 
+  "Australia",
+  "China", 
+  "Wuhan"
+
 ]
 
 def get_tweets_from_json(path):
