@@ -166,18 +166,18 @@ def parse_news_tweet_files():
 
 def main():
 
-  parse_news_tweet_files() 
+  # parse_news_tweet_files() 
 
   # raw json we are reading in 
-  # READ_PATH = "../data_clean/cnn_tweets_2020_clean.json"
+  READ_PATH = "../data_clean/cnn_tweets_clean.json"
 
-  # # where we are storing preprocessed json
-  # SAVE_PATH = "new_preprocessing.json"
+  # where we are storing preprocessed json
+  SAVE_PATH = "new_preprocessing.json"
 
-  # tweets = get_tweets_from_json(READ_PATH)
-  # tweets = remove_duplicate_tweets(tweets)
-  # tweets = assign_keywords(tweets)
-  # save_tweets_to_json(SAVE_PATH, tweets)
+  tweets = get_tweets_from_json(READ_PATH)
+  tweets = remove_duplicate_tweets(tweets)
+  tweets = assign_keywords(tweets)
+  save_tweets_to_json(SAVE_PATH, tweets)
 
 
 if __name__ == "__main__":
