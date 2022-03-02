@@ -121,43 +121,51 @@ def parse_response(root_id, reply_dict):
         
         return parsed_response 
 
-def main():
-
-    path = "./data_clean/fox_tweets_2020_clean.json"
-    f = open(path)
-    data = json.load(f)
-    tweets_list = data["tweets"]
+def build_replies_file(read_path, write_path):
+    """
+    Builds a replies file. Will need to do some preprocessing later. 
+    """
+    f = open(read_path)
+    news_tweets_list = json.load(f)
 
     # For each reply, get the data. 
-    out_file = open("./data_clean/sample.jsonl", "w") 
-    resume = False 
-    for tweet_dict in tweets_list:
-        news_tweet_id = str(tweet_dict["id"])
-     
+    save_file = open(write_path, "a") 
+    for i in range(len(news_tweets_list)):
+        print("Current iteration: " + str(i) + " out of " + str(len(news_tweets_list)))
+        
+        news_tweet_dict = news_tweets_list[i] 
+        news_tweet_id = str(news_tweet_dict["id"])
         reply_ids_list = get_reply_ids_list(news_tweet_id)
 
-        # Gets the top 20 replies 
-        if len(reply_ids_list) > 20:
-            reply_ids_list = reply_ids_list[0:20]
+        # Gets the top 25 replies 
+        if len(reply_ids_list) > 25:
+            reply_ids_list = reply_ids_list[0:25]
 
         ids_param = parse_reply_ids(reply_ids_list) 
-        print(ids_param) 
-
         url = create_url(ids_param)
         json_response = connect_to_endpoint(url)
-        replies_data_list = json_response["data"]
-
-        for reply_dict in replies_data_list:
+        replies_list = json_response["data"]
+        print(replies_list) 
+        for reply_dict in replies_list:
             parsed_response = parse_response(news_tweet_id, reply_dict)  
             if parsed_response == None: 
-                continue 
-            print(parsed_response) 
-            json.dump(parsed_response, out_file) 
-            out_file.write('\n')
+                continue  
+            json.dump(parsed_response, save_file) 
+            save_file.write('\n')
 
-        time.sleep(10) 
+        time.sleep(5) 
 
-    out_file.close() 
+    save_file.close() 
+
+def main():
+    fox_tweets_path = "./data_clean/fox_tweets_clean.json"
+    fox_replies_path = "./data_dirty/fox_replies_dirty.jsonl"
+    build_replies_file(fox_tweets_path, fox_replies_path)
+
+
+    # cnn_tweets_path = "./data_clean/cnn_tweets_clean.json"
+    # cnn_replies_path = "./data_dirty/cnn_replies_dirty.jsonl"
+    # build_replies_file(cnn_tweets_path, cnn_replies_path)
 
 
 if __name__ == "__main__":

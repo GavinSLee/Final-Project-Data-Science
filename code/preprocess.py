@@ -90,9 +90,24 @@ def assign_keywords(tweets):
     tweet["keywords"] = list(keywords)
   return tweets
 
-def clean_jsonl_file(read_path, save_path):
+def clean_replies_jsonl_file(read_path, save_path):
   """
-  Cleans up a dirty jsonl file and writes the data to a clean json file. 
+  Cleans up a dirty replies jsonl file and writes the data to a clean json file. 
+  """
+  with open(read_path, 'r') as read_json_file:
+    json_list = list(read_json_file)
+  
+  replies_list = [] 
+  for json_str in json_list:
+    json_line = json.loads(json_str) 
+    replies_list.append(json_line)
+  
+  with open(save_path, 'w') as save_json_file:
+    json.dump(replies_list, save_json_file) 
+
+def clean_news_tweet_jsonl_file(read_path, save_path):
+  """
+  Cleans up a dirty news tweets jsonl file and writes the data to a clean json file. 
   """
 
   with open(read_path, 'r') as read_json_file:
@@ -101,8 +116,10 @@ def clean_jsonl_file(read_path, save_path):
   tweets_list = []
   for json_str in json_list:
       json_line = json.loads(json_str) 
-      username = json_line["user"]["username"]
+      username = json_line["user"]["displayname"]
+      author_id = json_line["user"]["id"]
       json_line["username"] = username 
+      json_line["author_id"] = author_id 
       json_line = add_month(json_line) 
       json_line = remove_keys(json_line)
       tweets_list.append(json_line) 
@@ -137,30 +154,30 @@ def add_month(json_line):
   json_line["month"] = months_mapping[date]
   return json_line 
 
-def parse_files():
+def parse_news_tweet_files():
   fox_read_path = "./data_dirty/fox_tweets_dirty.jsonl"
   fox_write_path = "./data_clean/fox_tweets_clean.json"
-  clean_jsonl_file(fox_read_path, fox_write_path) 
+  clean_news_tweet_jsonl_file(fox_read_path, fox_write_path) 
 
   cnn_read_path = "./data_dirty/cnn_tweets_dirty.jsonl"
   cnn_write_path = "./data_clean/cnn_tweets_clean.json"
-  clean_jsonl_file(cnn_read_path, cnn_write_path)
+  clean_news_tweet_jsonl_file(cnn_read_path, cnn_write_path)
 
 
 def main():
 
-  # parse_files() 
+  parse_news_tweet_files() 
 
   # raw json we are reading in 
-  READ_PATH = "../data_clean/cnn_tweets_2020_clean.json"
+  # READ_PATH = "../data_clean/cnn_tweets_2020_clean.json"
 
-  # where we are storing preprocessed json
-  SAVE_PATH = "new_preprocessing.json"
+  # # where we are storing preprocessed json
+  # SAVE_PATH = "new_preprocessing.json"
 
-  tweets = get_tweets_from_json(READ_PATH)
-  tweets = remove_duplicate_tweets(tweets)
-  tweets = assign_keywords(tweets)
-  save_tweets_to_json(SAVE_PATH, tweets)
+  # tweets = get_tweets_from_json(READ_PATH)
+  # tweets = remove_duplicate_tweets(tweets)
+  # tweets = assign_keywords(tweets)
+  # save_tweets_to_json(SAVE_PATH, tweets)
 
 
 if __name__ == "__main__":
