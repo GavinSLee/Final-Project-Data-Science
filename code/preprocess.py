@@ -88,7 +88,8 @@ terms = [
   "Boris Johnson",
   "cuomo",
   "fox",
-  "cnn"
+  "cnn", 
+  "fauci"
 
 
   
@@ -227,21 +228,6 @@ def assign_keywords(tweets):
     tweet["keywords"] = list(keywords)
   return tweets
 
-def clean_replies_jsonl_file(read_path, save_path):
-  """
-  Cleans up a dirty replies jsonl file and writes the data to a clean json file. 
-  """
-  with open(read_path, 'r') as read_json_file:
-    json_list = list(read_json_file)
-  
-  replies_list = [] 
-  for json_str in json_list:
-    json_line = json.loads(json_str) 
-    replies_list.append(json_line)
-  
-  with open(save_path, 'w') as save_json_file:
-    json.dump(replies_list, save_json_file) 
-
 def clean_news_tweet_jsonl_file(read_path, save_path):
   """
   Cleans up a dirty news tweets jsonl file and writes the data to a clean json file. 
@@ -291,30 +277,94 @@ def add_month(json_line):
   json_line["month"] = months_mapping[date]
   return json_line 
 
+
 def parse_news_tweet_files():
-  fox_read_path = "./data_dirty/fox_tweets_dirty.jsonl"
-  fox_write_path = "./data_clean/fox_tweets_clean.json"
-  clean_news_tweet_jsonl_file(fox_read_path, fox_write_path) 
+  # fox_read_path = "./data_dirty/fox_tweets_dirty.jsonl"
+  # fox_write_path = "./data_clean/fox_tweets_clean.json"
+  # clean_news_tweet_jsonl_file(fox_read_path, fox_write_path) 
 
   cnn_read_path = "./data_dirty/cnn_tweets_dirty.jsonl"
   cnn_write_path = "./data_clean/cnn_tweets_clean.json"
   clean_news_tweet_jsonl_file(cnn_read_path, cnn_write_path)
 
 
+def clean_replies_jsonl_file(read_path, save_path, news_outlet):
+  """
+  Cleans up a dirty replies jsonl file and writes the data to a clean json file. 
+  """
+
+  with open(read_path, 'r') as read_json_file:
+    json_list = list(read_json_file)
+  
+  replies_list = [] 
+  for json_str in json_list:
+    json_line = json.loads(json_str) 
+    json_line["News Outlet"] = news_outlet 
+    replies_list.append(json_line)
+  
+  with open(save_path, 'w') as save_json_file:
+    json.dump(replies_list, save_json_file) 
+
+def parse_replies_file(news_tweets_file, replies_file, write_path):
+
+  news_tweets_set = set() 
+
+  with open(news_tweets_file, 'r') as f:
+    news_tweets_list = json.load(f) 
+  
+  for tweet in news_tweets_list:
+    tweet_id = tweet["id"]
+    if tweet_id not in news_tweets_set:
+      news_tweets_set.add(str(tweet_id))
+  
+  print(news_tweets_set) 
+  with open(replies_file, 'r') as f: 
+    replies_list = json.load(f) 
+  
+  final_replies_list = [] 
+  for reply in replies_list:
+    conversation_id = reply["conversation_id"]
+    if conversation_id in news_tweets_set:
+      final_replies_list.append(reply) 
+    
+  with open(write_path, 'w') as f:
+    json.dump(final_replies_list, f)
+
+
+def parse_all_replies_files():
+  fox_read_path = "./data_dirty/fox_replies_dirty.jsonl"
+  fox_write_path = "./data_clean/fox_replies_clean.json"
+  clean_replies_jsonl_file(fox_read_path, fox_write_path, "Fox News")
+
+  cnn_read_path = "./data_dirty/cnn_replies_dirty.jsonl"
+  cnn_write_path = "./data_clean/cnn_replies_clean.json"
+  clean_replies_jsonl_file(cnn_read_path, cnn_write_path, "CNN")
+
+def parse_replies_final():
+  cnn_news_file = "./data_clean/cnn_tweets_clean.json"
+  cnn_replies_file = "./data_clean/cnn_replies_clean.json"
+  cnn_write_path = "./data_clean/cnn_replies_clean_2.json"
+
+  parse_replies_file(cnn_news_file, cnn_replies_file, cnn_write_path)
+
+
+
 def main():
 
   # parse_news_tweet_files() 
+  # parse_replies_tweet_files() 
+  parse_replies_final() 
 
   # raw json we are reading in 
-  READ_PATH = "../data_clean/fox_tweets_clean.json"
+  # READ_PATH = "../data_clean/cnn_tweets_clean.json"
 
-  # where we are storing preprocessed json (we are overriding file here)
-  SAVE_PATH = "../data_clean/fox_tweets_clean.json"
+  # # # where we are storing preprocessed json (we are overriding file here)
+  # SAVE_PATH = "../data_clean/cnn_tweets_clean.json"
 
-  tweets = get_tweets_from_json(READ_PATH)
-  tweets = remove_duplicate_tweets(tweets)
-  tweets = assign_keywords(tweets)
-  save_tweets_to_json(SAVE_PATH, tweets)
+  # tweets = get_tweets_from_json(READ_PATH)
+  # tweets = remove_duplicate_tweets(tweets)
+  # tweets = assign_keywords(tweets)
+  # save_tweets_to_json(SAVE_PATH, tweets)
 
 
 if __name__ == "__main__":

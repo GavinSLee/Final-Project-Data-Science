@@ -9,7 +9,7 @@ The data is first written as jsonl (json lines) files in the directory: data_dir
 To run this file, use the command: python code/news_tweets.py in your shell. 
 """
 
-def scrape_tweets(news_outlet, path, keywords, begin_dates, end_dates):
+def scrape_tweets(news_outlet, path, keywords, max_result, begin_dates, end_dates):
     """
     This is the main method that scrapes tweets using the snscrape library. The snscrape library mainly uses a CLI; however, we can make use of python's OS package to scrape more programmatically. We iterate by month. 
 
@@ -21,6 +21,12 @@ def scrape_tweets(news_outlet, path, keywords, begin_dates, end_dates):
 
     :returns: None (writes the parsed result to a file in the ./data_clean directory)
     """
+    
+    
+    # Delete contents of file first 
+    f = open(path, "w")
+    f.truncate() 
+    f.close() 
 
     # We gather tweets per month. 
     for i in range(len(begin_dates)):
@@ -28,7 +34,7 @@ def scrape_tweets(news_outlet, path, keywords, begin_dates, end_dates):
         end_date = end_dates[i] 
 
         # Snscrape uses a CLI command to scrape tweets. The parameters --jsonl writes the scraped data to a json file, and --progress prints scraped data progress. 
-        base_command = "snscrape --jsonl --progress --max-results 150 --since " + begin_date + " twitter-search "
+        base_command = "snscrape --jsonl --progress --max-results " + max_result + " --since " + begin_date + " twitter-search "
         # Gather covid related tweets per our defined keywords, for each news outlet. 
         for keyword in keywords:
             query_param = keyword + " "
@@ -60,8 +66,10 @@ def main():
     FOX_PATH = './data_dirty/fox_tweets_dirty.jsonl'
     CNN_PATH = './data_dirty/cnn_tweets_dirty.jsonl'
 
-    # scrape_tweets("FoxNews", FOX_PATH, COVID_KEYWORDS, BEGIN_DATES, END_DATES)
-    scrape_tweets("CNN", CNN_PATH, COVID_KEYWORDS, BEGIN_DATES, END_DATES)
+    FOX_MAX_RESULT = 1000
+    CNN_MAX_RESULT = 50
+    # scrape_tweets("FoxNews", FOX_PATH, COVID_KEYWORDS, FOX_MAX_RESULT, BEGIN_DATES, END_DATES)
+    scrape_tweets("CNN", CNN_PATH, COVID_KEYWORDS, CNN_MAX_RESULT, BEGIN_DATES, END_DATES)
 
 if __name__ == "__main__":
     main() 

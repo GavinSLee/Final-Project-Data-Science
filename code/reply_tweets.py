@@ -19,7 +19,7 @@ def create_url(ids_param):
     """
     Creates the URL endpoint to gather our data from. 
     """
-    tweet_fields = "tweet.fields=lang,author_id,conversation_id,public_metrics"
+    tweet_fields = "tweet.fields=lang,created_at,author_id,conversation_id,public_metrics"
     ids = "ids=" + ids_param
     url = "https://api.twitter.com/2/tweets?{}&{}".format(ids, tweet_fields)
     return url
@@ -67,9 +67,8 @@ def get_reply_ids(stdout):
         reply_ids.append(tweet_id) 
 
     #  Remove the first and last element (dummy elements) 
-    if len(reply_ids) > 2:
-        reply_ids.pop(0)
-        reply_ids.pop() 
+    reply_ids.pop(0)
+    reply_ids.pop() 
 
     return reply_ids 
 
@@ -93,7 +92,6 @@ def parse_reply_ids(reply_ids_list):
     ids_param = ""
     for reply_id in reply_ids_list:
         ids_param += reply_id + "," 
-
     return ids_param[:-1]
 
 def parse_response(root_id, reply_dict):
@@ -110,6 +108,7 @@ def parse_response(root_id, reply_dict):
         reply_id = reply_dict['id']
         conversation_id = reply_dict['conversation_id']
         author_id = reply_dict['author_id']
+        created_at = reply_dict['created_at']
         text = reply_dict['text']
         lang = reply_dict['lang']
         retweet_count = reply_dict['public_metrics']['retweet_count']
@@ -117,7 +116,7 @@ def parse_response(root_id, reply_dict):
         like_count = reply_dict['public_metrics']['like_count']
         quote_count = reply_dict['public_metrics']['quote_count']
 
-        parsed_response = {"id" : reply_id, "conversation_id" : conversation_id, "author_id" : author_id, "text" : text, "lang" : lang, "retweet_count" : retweet_count, "reply_count" : reply_count, "like_count" : like_count, "quote_count" : quote_count}
+        parsed_response = {"id" : reply_id, "conversation_id" : conversation_id, "author_id" : author_id, "created_at" : created_at, "text" : text, "lang" : lang, "retweet_count" : retweet_count, "reply_count" : reply_count, "like_count" : like_count, "quote_count" : quote_count}
         
         return parsed_response 
 
@@ -136,30 +135,31 @@ def build_replies_file(read_path, write_path):
         news_tweet_dict = news_tweets_list[i] 
         news_tweet_id = str(news_tweet_dict["id"])
         reply_ids_list = get_reply_ids_list(news_tweet_id)
-
-        # Gets the top 25 replies 
-        if len(reply_ids_list) > 25:
-            reply_ids_list = reply_ids_list[0:25]
+        # Gets the top 100 replies 
+        if len(reply_ids_list) > 100:
+            reply_ids_list = reply_ids_list[0:100]
+        elif len(reply_ids_list) == 0:
+            continue 
 
         ids_param = parse_reply_ids(reply_ids_list) 
         url = create_url(ids_param)
         json_response = connect_to_endpoint(url)
         replies_list = json_response["data"]
-        print(replies_list) 
         for reply_dict in replies_list:
             parsed_response = parse_response(news_tweet_id, reply_dict)  
             if parsed_response == None: 
                 continue  
+            parsed_response["iteration"] = i 
             json.dump(parsed_response, save_file) 
             save_file.write('\n')
 
-        time.sleep(5) 
+        time.sleep(3) 
 
     save_file.close() 
 
 def main():
     fox_tweets_path = "./data_clean/fox_tweets_clean.json"
-    fox_replies_path = "./data_dirty/fox_replies_dirty.jsonl"
+    fox_replies_path = "./data_dirty/fox_replies_dirty_2.jsonl"
     build_replies_file(fox_tweets_path, fox_replies_path)
 
 
