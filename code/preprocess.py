@@ -24,6 +24,7 @@ terms = [
   "N95 respirator",
   "N95",
   "N95 mask",
+  "mask",
   "Outbreak",
   "Pandemic",
   "Paxlovid",
@@ -54,6 +55,14 @@ terms = [
   # TODO: get as many terms as you can!!!
   # For instance, political words like Biden / Trump, organizations like CDC, etc
 
+  #additional health words:
+  "hospital",
+  "surgery",
+  "respirator",
+  "emergency room",
+  "emergency",
+  
+
   #politics
   "biden", 
   "trump",
@@ -62,21 +71,124 @@ terms = [
   "Center for Disease Control"
   "WHO", 
   "World Health Organization", 
+  "shutdown",
+  "lockdown",
+  "restrictions",
+  "democrat",
+  "republican",
+  "GOP",
+  "Dem",
+  "senate",
+  "house",
+  "house of representatives",
+  "harris",
+  "pelosi",
+  "romney",
+  "sanders",
+  "Boris Johnson",
+  "cuomo",
+  "fox",
+  "cnn"
+
+
+  
 
   #transportations
   "Airport", 
   "Bus", 
   "Public Transportation", 
+  "Ship", 
+  "Cruise",
+  "airplane",
+  "airline",
   
   #Location
   "USA",
   "United States",
+  "New York", 
+  "Rhode Island", 
+  "Massachusetts", 
+  "California", 
+  "Texas", 
+  "Guam",
+  "Boston", 
+  "New York", 
+  "Los Angeles",
+  "Connecticut",
+  "Rhode Island",
+  "Pennsylvania", 
+  "Georgia", 
+  "Atlanta", 
   "UK", 
   "United Kingdom", 
   "Germany", 
   "Australia",
   "China", 
-  "Wuhan"
+  "Beijing", 
+  "Taiwan", 
+  "Wuhan", 
+  "Japan", 
+  "India",
+  "Tokyo",
+  "South Africa", 
+  "South Korea", 
+  "North Korea", 
+  "Vietnam", 
+  "EU", 
+  "European Union",
+  "Russia", 
+  'Brittain',
+
+  #market related
+  "Stock",
+  "Supply Chain",
+  "Inflation",
+  "Deflation",
+  "Market",
+  "Wall Street",
+  "economy",
+  "currency",
+  "commerce",
+
+  #vaccine related
+  "pfizer",
+  "moderna",
+  "jnj"
+  "johnson and johnson",
+  "booster",
+  "dose",
+  "first dose",
+  "second dose",
+  "research", 
+
+  #variants
+  "omicron", 
+  "delta", 
+
+  #symptoms
+  "positive",
+  "negative",
+  "cough",
+  "vomit",
+  "headache",
+  "nausea",
+  
+
+  #religion
+  "chirstian",
+  "religion",
+  "religious",
+  "bible",
+
+
+  #other terms
+  "fake news",
+  "death",
+  "casualty",
+  "death toll",
+
+  
+  
 
 ]
 
@@ -194,10 +306,10 @@ def main():
   # parse_news_tweet_files() 
 
   # raw json we are reading in 
-  READ_PATH = "../data_clean/cnn_tweets_clean.json"
+  READ_PATH = "../data_clean/fox_tweets_clean.json"
 
-  # where we are storing preprocessed json
-  SAVE_PATH = "new_preprocessing.json"
+  # where we are storing preprocessed json (we are overriding file here)
+  SAVE_PATH = "../data_clean/fox_tweets_clean.json"
 
   tweets = get_tweets_from_json(READ_PATH)
   tweets = remove_duplicate_tweets(tweets)
