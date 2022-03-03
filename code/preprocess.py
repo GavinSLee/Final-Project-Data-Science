@@ -56,7 +56,12 @@ terms = [
   # For instance, political words like Biden / Trump, organizations like CDC, etc
 
   #additional health words:
-  ""
+  "hospital",
+  "surgery",
+  "respirator",
+  "emergency room",
+  "emergency",
+  
 
   #politics
   "biden", 
@@ -68,6 +73,24 @@ terms = [
   "World Health Organization", 
   "shutdown",
   "lockdown",
+  "restrictions",
+  "democrat",
+  "republican",
+  "GOP",
+  "Dem",
+  "senate",
+  "house",
+  "house of representatives",
+  "harris",
+  "pelosi",
+  "romney",
+  "sanders",
+  "Boris Johnson",
+  "cuomo",
+  "fox",
+  "cnn"
+
+
   
 
   #transportations
@@ -90,7 +113,10 @@ terms = [
   "Guam",
   "Boston", 
   "New York", 
-  "Los Angeles", 
+  "Los Angeles",
+  "Connecticut",
+  "Rhode Island",
+  "Pennsylvania", 
   "Georgia", 
   "Atlanta", 
   "UK", 
@@ -111,6 +137,7 @@ terms = [
   "EU", 
   "European Union",
   "Russia", 
+  'Brittain',
 
   #market related
   "Stock",
@@ -132,7 +159,26 @@ terms = [
   "dose",
   "first dose",
   "second dose",
+  "research", 
 
+  #variants
+  "omicron", 
+  "delta", 
+
+  #symptoms
+  "positive",
+  "negative",
+  "cough",
+  "vomit",
+  "headache",
+  "nausea",
+  
+
+  #religion
+  "chirstian",
+  "religion",
+  "religious",
+  "bible",
 
 
   #other terms
@@ -260,10 +306,10 @@ def main():
   # parse_news_tweet_files() 
 
   # raw json we are reading in 
-  READ_PATH = "../data_clean/cnn_tweets_clean.json"
+  READ_PATH = "../data_clean/fox_tweets_clean.json"
 
   # where we are storing preprocessed json (we are overriding file here)
-  SAVE_PATH = "../data_clean/cnn_tweets_clean.json"
+  SAVE_PATH = "../data_clean/fox_tweets_clean.json"
 
   tweets = get_tweets_from_json(READ_PATH)
   tweets = remove_duplicate_tweets(tweets)
