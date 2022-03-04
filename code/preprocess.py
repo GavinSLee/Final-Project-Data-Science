@@ -397,9 +397,41 @@ def preprocess_replies_tweets_files_final():
   replies_add_fields("Fox News", fox_replies_clean_path)
   replies_add_fields("CNN", cnn_replies_clean_path)
 
+def create_sample_file(read_path, write_path): 
+  with open(read_path, 'r') as f:
+    data_list = json.load(f) 
+  
+  sample = [] 
+  for i in range(120):
+    curr_data = data_list[i] 
+    sample.append(curr_data) 
+  
+  with open(write_path, 'w') as f:
+    json.dump(sample, f) 
+  
+def create_samples():
+  fox_tweets_clean_path = "../data_clean/fox_tweets_clean.json"
+  fox_tweets_sample_path = "../data_samples/fox_tweets_sample.json"
+
+  fox_replies_clean_path = "../data_clean/fox_replies_clean.json"
+  fox_replies_sample_path = "../data_samples/fox_replies_sample.json"
+
+  
+  cnn_tweets_clean_path = "../data_clean/cnn_tweets_clean.json"
+  cnn_tweets_sample_path = "../data_samples/cnn_tweets_sample.json"
+
+  cnn_replies_clean_path = "../data_clean/cnn_replies_clean.json"
+  cnn_replies_sample_path = "../data_samples/cnn_replies_sample.json"
+
+  create_sample_file(fox_tweets_clean_path, fox_tweets_sample_path)
+  create_sample_file(fox_replies_clean_path, fox_replies_sample_path)
+  create_sample_file(cnn_tweets_clean_path, cnn_tweets_sample_path)
+  create_sample_file(cnn_replies_clean_path, cnn_replies_sample_path)
+
 def main():
   # preprocess_news_tweets_files_final() 
-  preprocess_replies_tweets_files_final() 
+  # preprocess_replies_tweets_files_final() 
+  create_samples() 
   
 if __name__ == "__main__":
     main() 
