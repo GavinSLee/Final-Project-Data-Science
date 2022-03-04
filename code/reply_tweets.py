@@ -129,15 +129,15 @@ def build_replies_file(read_path, write_path):
 
     # For each reply, get the data. 
     save_file = open(write_path, "a") 
-    for i in range(len(news_tweets_list)):
+    for i in range(1633, len(news_tweets_list)):
         print("Current iteration: " + str(i) + " out of " + str(len(news_tweets_list)))
         
         news_tweet_dict = news_tweets_list[i] 
-        news_tweet_id = str(news_tweet_dict["id"])
+        news_tweet_id = news_tweet_dict["id"]
         reply_ids_list = get_reply_ids_list(news_tweet_id)
-        # Gets the top 100 replies 
-        if len(reply_ids_list) > 100:
-            reply_ids_list = reply_ids_list[0:100]
+        # Gets the top 50 replies 
+        if len(reply_ids_list) > 50:
+            reply_ids_list = reply_ids_list[0:50]
         elif len(reply_ids_list) == 0:
             continue 
 
@@ -153,19 +153,18 @@ def build_replies_file(read_path, write_path):
             json.dump(parsed_response, save_file) 
             save_file.write('\n')
 
-        time.sleep(3) 
+        time.sleep(1) 
 
     save_file.close() 
 
 def main():
-    fox_tweets_path = "./data_clean/fox_tweets_clean.json"
-    fox_replies_path = "./data_dirty/fox_replies_dirty_2.jsonl"
-    build_replies_file(fox_tweets_path, fox_replies_path)
+    # fox_tweets_path = "../data_clean/fox_tweets_clean.json"
+    # fox_replies_path = "../data_dirty/fox_replies_dirty.jsonl"
+    # build_replies_file(fox_tweets_path, fox_replies_path)
 
-
-    # cnn_tweets_path = "./data_clean/cnn_tweets_clean.json"
-    # cnn_replies_path = "./data_dirty/cnn_replies_dirty.jsonl"
-    # build_replies_file(cnn_tweets_path, cnn_replies_path)
+    cnn_tweets_path = "../data_clean/cnn_tweets_clean.json"
+    cnn_replies_path = "../data_dirty/cnn_replies_dirty.jsonl"
+    build_replies_file(cnn_tweets_path, cnn_replies_path)
 
 
 if __name__ == "__main__":

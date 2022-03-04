@@ -63,12 +63,13 @@ def main():
     BEGIN_DATES = begin_dates_2020 + begin_dates_2021
     END_DATES = end_dates_2020 + end_dates_2021 
 
-    FOX_PATH = './data_dirty/fox_tweets_dirty.jsonl'
-    CNN_PATH = './data_dirty/cnn_tweets_dirty.jsonl'
+    FOX_PATH = '../data_dirty/fox_tweets_dirty.jsonl'
+    CNN_PATH = '../data_dirty/cnn_tweets_dirty.jsonl'
 
-    FOX_MAX_RESULT = 1000
-    CNN_MAX_RESULT = 50
-    # scrape_tweets("FoxNews", FOX_PATH, COVID_KEYWORDS, FOX_MAX_RESULT, BEGIN_DATES, END_DATES)
+    FOX_MAX_RESULT = "1000"
+    CNN_MAX_RESULT = "50"
+
+    scrape_tweets("FoxNews", FOX_PATH, COVID_KEYWORDS, FOX_MAX_RESULT, BEGIN_DATES, END_DATES)
     scrape_tweets("CNN", CNN_PATH, COVID_KEYWORDS, CNN_MAX_RESULT, BEGIN_DATES, END_DATES)
 
 if __name__ == "__main__":
