@@ -428,10 +428,32 @@ def create_samples():
   create_sample_file(cnn_tweets_clean_path, cnn_tweets_sample_path)
   create_sample_file(cnn_replies_clean_path, cnn_replies_sample_path)
 
+def count_data_points(read_path):
+  with open(read_path, 'r') as f:
+    data = json.load(f) 
+  
+  count = 0 
+  for record in data:
+    count += 1
+  
+  print(read_path + " count is: " + str(count))
+
+def count_all_data_points():
+  fox_tweets_clean_path = "../data_clean/fox_tweets_clean.json"
+  fox_replies_clean_path = "../data_clean/fox_replies_clean.json"
+  cnn_tweets_clean_path = "../data_clean/cnn_tweets_clean.json"
+  cnn_replies_clean_path = "../data_clean/cnn_replies_clean.json"
+
+  count_data_points(fox_tweets_clean_path)
+  count_data_points(fox_replies_clean_path)
+  count_data_points(cnn_tweets_clean_path) 
+  count_data_points(cnn_replies_clean_path) 
+
 def main():
   # preprocess_news_tweets_files_final() 
   # preprocess_replies_tweets_files_final() 
-  create_samples() 
+  # create_samples() 
+  count_all_data_points() 
   
 if __name__ == "__main__":
     main() 
