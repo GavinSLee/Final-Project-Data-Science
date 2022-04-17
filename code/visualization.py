@@ -6,7 +6,7 @@ from matplotlib import dates as mpl_dates
 
 ############# Visualization One #############
 
-months_2020 = ["January 2020", "February 2020", "March 2020", "April 2020", "May 2020", "June 2020", "July 2020", "August 2020", "September 2020", "October 2020", "November 2020", "December 2020"]
+months_2020 = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
 
 months_2021 = ["January 2021", "February 2021", "March 2021", "April 2021", "May 2021", "June 2021", "July 2021", "August 2021", "September 2021", "October 2021", "November 2021", "December 2021"]
 
@@ -105,7 +105,6 @@ def build_keyword_json_files():
     fox_tweets_clean_path = "../data_clean/fox_tweets_clean.json"
     fox_keyword_freq_json_path = "../data_clean/fox_keyword_freq.json"
     
-
     cnn_tweets_list = load_data(cnn_tweets_clean_path)
     fox_tweets_list = load_data(fox_tweets_clean_path) 
     
@@ -115,32 +114,11 @@ def build_keyword_json_files():
     write_data(cnn_keyword_freq_json_path, cnn_keyword_freq_json)
     write_data(fox_keyword_freq_json_path, fox_keyword_freq_json)
 
-
 def visualization_one():
-    cnn_keyword_freq_path = "../data_clean/cnn_keyword_freq.json"
-    fox_keyword_freq_path = "../data_clean/fox_keyword_freq.json"
-
-    cnn_keyword_freq_data = load_data(cnn_keyword_freq_path)
-    fox_keyword_freq_data = load_data(fox_keyword_freq_path) 
-
-    y_vals = [0 for i in range(24)]
-    months_dict = cnn_keyword_freq_data[0]["CNN"]
-    index = 0 
-    for month in months_dict:
-        keywords_dict = months_dict[month]
-        if "trump" in keywords_dict:
-            y_vals[index] = keywords_dict["trump"]
-
-    print(y_vals) 
-
-    # dates = [datetime()]
-
-    plt.plot(months, y_vals)
-    plt.show()
+    pass 
 
 
 ############# Visualization Two #############
-
 
 
 def visualization_two():
