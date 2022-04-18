@@ -55,25 +55,20 @@ def get_data_with_sentiment(classifier, read_path, write_path):
             json.dump(new_replies, f) 
 
 def main_assign_sentiment_scores(): 
-    # model_name = "cardiffnlp/twitter-roberta-base-sentiment-latest"
-    # classifier = load_classifier(model_name) 
+    model_name = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+    classifier = load_classifier(model_name) 
 
-    # cnn_replies_read_path = "../data_clean/cnn_replies_clean.json"
-    # cnn_replies_write_path = "../data_clean/cnn_replies_clean_sentiment.json"
-    # fox_replies_read_path = "../data_clean/fox_replies_clean.json"
-    # fox_replies_write_path = "../data_clean/fox_replies_clean_sentiment.json"
+    cnn_replies_read_path = "../data_clean/cnn_replies_clean.json"
+    cnn_replies_write_path = "../data_clean/cnn_replies_clean_sentiment.json"
+    fox_replies_read_path = "../data_clean/fox_replies_clean.json"
+    fox_replies_write_path = "../data_clean/fox_replies_clean_sentiment.json"
 
-    # get_data_with_sentiment(classifier, cnn_replies_read_path, cnn_replies_write_path)
-    # get_data_with_sentiment(classifier, fox_replies_read_path, fox_replies_write_path) 
+    get_data_with_sentiment(classifier, cnn_replies_read_path, cnn_replies_write_path)
+    get_data_with_sentiment(classifier, fox_replies_read_path, fox_replies_write_path) 
 
 
 
 ########################## Handles Cross Validation ##########################
-
-
-def load_validation_datasets():
-    pass 
-
  
 def compute_metrics(eval_pred):
    load_accuracy = load_metric("accuracy")
