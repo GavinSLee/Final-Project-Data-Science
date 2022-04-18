@@ -28,6 +28,24 @@ def chisquared_independence_test(df, column_a_name, column_b_name):
     # and then we'll return tstats and pvalue
     return tstats, pvalue
 
+def two_sample_ttest(values_a, values_b):
+    ## Stencil: Error check input - do not modify this part
+    
+    # TODO: Use scipy's ttest_ind
+    # (https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html)
+    # to get the t-statistic and the p-value
+    # Note: Be sure to make the function call in a way such that the code will disregard
+    # null (nan) values. Additionally, you can assume equal variance.
+    tstats, pvalue = ttest_ind(values_a, values_b)
+
+    # TODO: You can print out the tstats, pvalue, and other necessary
+    # calculations to determine your answer to the questions
+    print("tstats: ", tstats)
+    print("p value: ", pvalue)
+
+    # and then we'll return tstats and pvalue
+    return tstats, pvalue
+
 """
 Calculates tweet_virality. Datum represents tweet objects in tweets_clean.json
 Make sure tweets are from tweets_clean.json files
@@ -53,11 +71,45 @@ def save_json(path, obj):
     with open(path, 'w') as f:
         return json.dump(obj, f)
 
-            
+##################### HYPOTHESIS #################################
+
+"""
+Hypothesis 1: Frequency of each keyword used between Fox and CNN
+"""        
+def hypothesis1():
+    cnn_freq_read_path = "../data_clean/cnn_keyword_freq.json"
+    fox_freq_read_path = "../data_clean/fox_keyword_freq.json"
+    out_path = "../data_clean/hypothesis1.json"
+    result = {}
+    cnn_freq = load_json(cnn_freq_read_path)[0]["CNN"]
+    fox_freq = load_json(fox_freq_read_path)[0]["Fox News"]
+    for keyword in terms:
+        is_fox = []
+        keyword_freq = []
+        for month in cnn_freq:
+            cnn_freq_data = cnn_freq[month]
+            fox_freq_data = fox_freq[month]
+            cnn_keyword_freq = 0
+            fox_keyword_freq = 0
+            if keyword in cnn_freq_data:
+                cnn_keyword_freq = cnn_freq_data[keyword]
+            if keyword in fox_freq_data:
+                fox_keyword_freq = fox_freq_data[keyword]
+            is_fox.append(0)
+            keyword_freq.append(cnn_keyword_freq)
+            is_fox.append(1)
+            keyword_freq.append(fox_keyword_freq)
+        # df = pd.DataFrame(data={"fox" : is_fox, "frequency": keyword_freq})
+        tstats, pval = two_sample_ttest(is_fox, keyword_freq)
+        result[keyword] = {"tstats" : tstats, "p-value": pval}
+    save_json(out_path, result)
+    
+
+
+    
 """
 Hypothesis 3: Relationship between keyword vs virality of the content
 """
-
 def hypothesis3(): 
     MIN_VIRAL = 800 #viral posts must be 800 and over
     cnn_tweets_read_path = "../data_clean/cnn_tweets_clean.json"
@@ -159,7 +211,7 @@ def keywords_with_virality_per_month():
 
 
 def main():
-    hypothesis3()
+    hypothesis1()
 
 
 if __name__ == "__main__":
