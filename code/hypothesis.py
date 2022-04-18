@@ -2,6 +2,32 @@
 import json
 from preprocess import terms
 import numpy as np
+import pandas as pd
+from scipy.stats import ttest_1samp, ttest_ind, ttest_rel, chi2_contingency
+
+
+############## STATS TESTS ##########################
+def chisquared_independence_test(df, column_a_name, column_b_name):
+    ## Stencil: Error check input - do not modify this part
+    # assert all_variable_names_in_df([column_a_name, column_b_name], df)
+
+    # TODO: Create a cross table between the two columns a and b
+    # Hint: If you are unsure how to do this, refer to the stats lab!
+    cross_table = pd.crosstab(df[column_a_name], df[column_b_name])
+
+    # TODO: Use scipy's chi2_contingency
+    # (https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html)
+    # to get the test statistic and the p-value
+    tstats, pvalue, dof, expected = chi2_contingency(cross_table)
+
+    # TODO: You can print out the test statistics and pvalue to determine your answer
+    # to the questions
+    print("tstats: ", tstats)
+    print("p value: ", pvalue)
+
+    # and then we'll return tstats and pvalue
+    return tstats, pvalue
+
 """
 Calculates tweet_virality. Datum represents tweet objects in tweets_clean.json
 Make sure tweets are from tweets_clean.json files
@@ -27,6 +53,42 @@ def save_json(path, obj):
     with open(path, 'w') as f:
         return json.dump(obj, f)
 
+            
+"""
+Hypothesis 3: Relationship between keyword vs virality of the content
+"""
+
+def hypothesis3(): 
+    MIN_VIRAL = 800 #viral posts must be 800 and over
+    cnn_tweets_read_path = "../data_clean/cnn_tweets_clean.json"
+    fox_tweets_read_path = "../data_clean/fox_tweets_clean.json"
+    out_path = "../data_clean/hypothesis3.json"
+    all_tweets = load_json(cnn_tweets_read_path) + load_json(fox_tweets_read_path)
+    result = {}
+    for keyword in terms:
+        has_keyword_list = []
+        is_viral = []
+        for tweet in all_tweets:
+            if keyword in tweet["keywords"]:
+                has_keyword_list.append(1)
+            else:
+                has_keyword_list.append(0)
+            if tweet_virality(tweet) >= 800:
+                is_viral.append(1)
+            else:
+                is_viral.append(0)
+        if not np.any(has_keyword_list): continue
+        df = pd.DataFrame(data={"keyword" : has_keyword_list, "viral": is_viral})
+        tstats, pval = chisquared_independence_test(df, "keyword", "viral")
+        result[keyword] = {"tstats": tstats, "p-value": pval}
+    save_json(out_path, result)
+
+
+
+
+
+
+############################## OLD WORK (might be useful for visualization later #####################################
 """
 Hypothesis #3a
 What COVID keywords do the tweets need to contain in order for the tweet to have a high virality number?
@@ -87,10 +149,7 @@ def keywords_with_virality_per_month():
         if total_count == 0: continue
         result[keyword] = data
     save_json(out_path, result)
-            
 
-        
-        
 
             
         
@@ -99,11 +158,9 @@ def keywords_with_virality_per_month():
     
 
 
-
-
-
 def main():
-    keywords_with_virality_per_month()
+    hypothesis3()
+
 
 if __name__ == "__main__":
     main() 
