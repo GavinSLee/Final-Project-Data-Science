@@ -77,7 +77,6 @@ terms = [
   "democrat",
   "republican",
   "GOP",
-  "Dem",
   "senate",
   "house",
   "house of representatives",

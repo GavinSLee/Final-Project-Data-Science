@@ -204,7 +204,7 @@ def keywords_with_virality_per_month():
 
 
         
-def get_subset_replies(covid_keywords_set, tweets, replies):
+def get_sublist_replies(covid_keywords_set, tweets, replies):
     # First, iterate through tweets and see if it contains one of the covid keywords. If it does, append the tweet id to a list of tweet_ids.
 
     tweet_ids_set = set() 
@@ -227,6 +227,14 @@ def get_subset_replies(covid_keywords_set, tweets, replies):
     return reply_subset  
         
 
+def get_sentiment_scores_list(replies_subset):
+    sentiment_scores = [] 
+    for reply in replies_subset:
+        sentiment_score = reply["adjusted_sentiment_score"]
+        sentiment_scores.append(sentiment_score) 
+    
+    return sentiment_scores 
+
 def hypothesis2():
     """
     We want to determine the average sentiment of reply tweets for certain covid keywords differs between Fox & CNN. 
@@ -245,15 +253,21 @@ def hypothesis2():
 
     
     # First, get replies that correspond to the list of covid keywords that we want
-    keywords_subset = {"fauci", "trump", "biden"}
-    cnn_replies_subset = get_subset_replies(keywords_subset, cnn_tweets, cnn_replies) 
-    fox_replies_subset = get_subset_replies(keywords_subset, fox_tweets, fox_replies) 
+    keywords_subset = {"mask"}
+    cnn_replies_sublist = get_sublist_replies(keywords_subset, cnn_tweets, cnn_replies) 
+    fox_replies_sublist = get_sublist_replies(keywords_subset, fox_tweets, fox_replies) 
 
+    cnn_sentiment_scores = get_sentiment_scores_list(cnn_replies_sublist) 
+    fox_sentiment_scores = get_sentiment_scores_list(fox_replies_sublist) 
+    # print(cnn_sentiment_scores)
+    # print(fox_sentiment_scores)
 
+    tstats, p_value = two_sample_ttest(cnn_sentiment_scores, fox_sentiment_scores) 
 
 
 def main():
-    hypothesis1()
+    # hypothesis1()
+    hypothesis2() 
 
 
 if __name__ == "__main__":
