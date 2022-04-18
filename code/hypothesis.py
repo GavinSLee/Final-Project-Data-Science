@@ -151,11 +151,54 @@ def keywords_with_virality_per_month():
     save_json(out_path, result)
 
 
-            
+        
+def get_subset_replies(covid_keywords_set, tweets, replies):
+    # First, iterate through tweets and see if it contains one of the covid keywords. If it does, append the tweet id to a list of tweet_ids.
+
+    tweet_ids_set = set() 
+
+    for tweet in tweets:
+        keywords = tweet["keywords"]
+        tweet_id = tweet["id"]
+        for keyword in keywords:
+            if keyword in covid_keywords_set: 
+                tweet_ids_set.add(tweet_id) 
+                break 
+    
+    reply_subset = [] 
+    # Then, get subset of replies in which the reply has a conversation ID that matches one of the keys in the tweet_ids_set
+    for reply in replies: 
+        conversation_id = reply["conversation_id"]
+        if conversation_id in tweet_ids_set:
+            reply_subset.append(reply)
+
+    return reply_subset  
         
 
+def hypothesis2():
+    """
+    We want to determine the average sentiment of reply tweets for certain covid keywords differs between Fox & CNN. 
+    """
+    cnn_tweets_path = "../data_clean/cnn_tweets_clean.json"
+    cnn_replies_path = "../data_clean/cnn_replies_clean.json"
+
+    fox_tweets_path = "../data_clean/fox_tweets_clean.json"
+    fox_replies_path = "../data_clean/fox_replies_clean.json"
+
+    cnn_tweets = load_json(cnn_tweets_path)
+    cnn_replies = load_json(cnn_replies_path) 
+
+    fox_tweets = load_json(fox_tweets_path) 
+    fox_replies = load_json(fox_replies_path) 
 
     
+    # First, get replies that correspond to the list of covid keywords that we want
+    keywords_subset = {"fauci", "trump", "biden"}
+    replies_subset = get_subset_replies(keywords_subset, cnn_tweets, cnn_replies) 
+
+    print(replies_subset) 
+
+
 
 
 def main():
