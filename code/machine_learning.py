@@ -1,6 +1,11 @@
 import json 
+import numpy as np 
 from transformers import pipeline 
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoConfig
+from transformers import TrainingArguments, Trainer
+from transformers import DataCollatorWithPadding
+from datasets import load_metric 
+from huggingface_hub import notebook_login
 
 ########################## Assigns Sentiment Scores ##########################
 
@@ -38,7 +43,7 @@ def get_data_with_sentiment(classifier, read_path, write_path):
     with open(read_path, 'r') as f:
         reply_list = json.load(f)
 
-    for i in range(20518, len(reply_list)):
+    for i in range(len(reply_list)):
         print("Current Iteration: " + str(i) + " out of " + str(len(reply_list))) 
         reply = reply_list[i] 
         assign_sentiment(classifier, reply) 
@@ -49,10 +54,38 @@ def get_data_with_sentiment(classifier, read_path, write_path):
             f.seek(0) 
             json.dump(new_replies, f) 
 
+def main_assign_sentiment_scores(): 
+    model_name = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+    classifier = load_classifier(model_name) 
+
+    cnn_replies_read_path = "../data_clean/cnn_replies_clean.json"
+    cnn_replies_write_path = "../data_clean/cnn_replies_clean_sentiment.json"
+    fox_replies_read_path = "../data_clean/fox_replies_clean.json"
+    fox_replies_write_path = "../data_clean/fox_replies_clean_sentiment.json"
+
+    get_data_with_sentiment(classifier, cnn_replies_read_path, cnn_replies_write_path)
+    get_data_with_sentiment(classifier, fox_replies_read_path, fox_replies_write_path) 
+
+
 
 ########################## Handles Cross Validation ##########################
+ 
+def compute_metrics(eval_pred):
+   load_accuracy = load_metric("accuracy")
+   load_f1 = load_metric("f1")
+  
+   logits, labels = eval_pred
+   predictions = np.argmax(logits, axis=-1)
+   accuracy = load_accuracy.compute(predictions=predictions, references=labels)["accuracy"]
+   f1 = load_f1.compute(predictions=predictions, references=labels)["f1"]
+   return {"accuracy": accuracy, "f1": f1}
 
+def preprocess_function(examples, tokenizer):
+   return tokenizer(examples["text"], truncation=True)
 
+def main_cross_validate():
+    model_name = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+    classifier = load_classifier(model_name) 
 
 
 
@@ -60,16 +93,9 @@ def get_data_with_sentiment(classifier, read_path, write_path):
 
 
 def main():
-    model_name = "cardiffnlp/twitter-roberta-base-sentiment-latest"
-    classifier = load_classifier(model_name) 
-
-    cnn_replies_read_path = "../data_clean/cnn_replies_clean.json"
-    cnn_replies_write_path = "../data_clean/cnn_replies_clean_sentiment.json"
-    # fox_replies_read_path = "../data_clean/fox_replies_clean.json"
-    # fox_replies_write_path = "../data_clean/fox_replies_clean_sentiment.json"
-
-    get_data_with_sentiment(classifier, cnn_replies_read_path, cnn_replies_write_path)
-    # get_data_with_sentiment(classifier, fox_replies_read_path, fox_replies_write_path) 
+    main_assign_sentiment_scores()
+    # main_cross_validate()
+    
         
 if __name__ == "__main__":
     main() 

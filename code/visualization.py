@@ -3,13 +3,14 @@ import operator
 from datetime import datetime, timedelta
 from matplotlib import pyplot as plt
 from matplotlib import dates as mpl_dates
+from matplotlib.dates import DateFormatter
 
 ############# Visualization One #############
 
 months_2020 = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
-
+full_months_2020 = ["January 2020", "February 2020", "March 2020", "April 2020", "May 2020", "June 2020", "July 2020", "August 2020", "September 2020", "October 2020", "November 2020", "December 2020"]
 months_2021 = ["January 2021", "February 2021", "March 2021", "April 2021", "May 2021", "June 2021", "July 2021", "August 2021", "September 2021", "October 2021", "November 2021", "December 2021"]
-
+full_months = full_months_2020 + months_2021
 months = months_2020 + months_2021
 
 def sort_keyword_freq_dict(keyword_freq_dict, news_outlet): 
@@ -115,9 +116,82 @@ def build_keyword_json_files():
     write_data(fox_keyword_freq_json_path, fox_keyword_freq_json)
 
 def visualization_one():
-    pass 
+    # Plot 1
+    cnn_data = load_data("data_clean/cnn_keyword_freq.json")
+    fox_data = load_data("data_clean/fox_keyword_freq.json")
+    
+    percent_tweets_with_keywords = []
+    percent_tweets_with_keywords_fox = []
+    
+    for m in full_months:
+        curr_month_data = cnn_data[0]['CNN'][m]
+        curr_month_data_fox = fox_data[0]['Fox News'][m]
+        percent_tweets_with_keywords.append(curr_month_data["num_news_tweets_contain_keyword"]/curr_month_data["num_news_tweets_this_month"])
+        if "num_news_tweets_contain_keyword" in curr_month_data_fox and "num_news_tweets_this_month" in curr_month_data_fox:
+            percent_tweets_with_keywords_fox.append(curr_month_data_fox["num_news_tweets_contain_keyword"]/curr_month_data_fox["num_news_tweets_this_month"])
+        else:
+            percent_tweets_with_keywords_fox.append(0)
+    # CNN
+    fig, ax = plt.subplots()
+    ax.plot(full_months,percent_tweets_with_keywords)
 
+    fig.autofmt_xdate()
+    ax.set_xlabel('months')
+    ax.set_ylabel('ratio')
+    ax.set_title('Ratio of number of news tweets containing keyword to number of news tweets this month in CNN news')
+    plt.show()
+    
+    # FOX
+    fig, ax = plt.subplots()
+    ax.plot(full_months,percent_tweets_with_keywords_fox)
 
+    fig.autofmt_xdate()
+    ax.set_xlabel('months')
+    ax.set_ylabel('ratio')
+    ax.set_title('Ratio of number of news tweets containing keyword to number of news tweets this month in FOX news')
+    plt.show()
+    
+    # Plot 2
+    key_words = ["pandemic", "trump", "dem", "vaccine", "variant", "biden"]
+
+    curr_key_vals = []
+    curr_key_vals_fox = []
+    for key in key_words:
+        for m in full_months:
+            curr_month_data = cnn_data[0]['CNN'][m]
+            
+            if key in curr_month_data:
+                curr_key_vals.append(curr_month_data[key])
+            else:
+                curr_key_vals.append(0)
+
+        plt.plot(full_months,curr_key_vals, label = key)
+        curr_key_vals = []
+    plt.gcf().autofmt_xdate()
+    plt.xlabel('months')
+    plt.ylabel('count')
+    plt.title('Monthly frequency of each keyword on CNN, 2020-2021')
+    plt.legend()
+    plt.show()
+    
+    for key in key_words:
+        for m in full_months:
+            curr_month_data_fox = fox_data[0]['Fox News'][m]
+            if key in curr_month_data_fox:
+                curr_key_vals_fox.append(curr_month_data_fox[key])
+            else:
+                curr_key_vals_fox.append(0)
+        plt.plot(full_months,curr_key_vals_fox, label = key)
+        curr_key_vals_fox = []
+    plt.gcf().autofmt_xdate()
+    plt.xlabel('months')
+    plt.ylabel('count')
+    plt.title('Monthly frequency of each keyword on Fox news, 2020-2021')
+    plt.legend()
+    plt.show()
+    
+        
+    
 ############# Visualization Two #############
 
 
