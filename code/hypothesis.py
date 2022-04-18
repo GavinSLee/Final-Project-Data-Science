@@ -246,9 +246,8 @@ def hypothesis2():
     
     # First, get replies that correspond to the list of covid keywords that we want
     keywords_subset = {"fauci", "trump", "biden"}
-    replies_subset = get_subset_replies(keywords_subset, cnn_tweets, cnn_replies) 
-
-    print(replies_subset) 
+    cnn_replies_subset = get_subset_replies(keywords_subset, cnn_tweets, cnn_replies) 
+    fox_replies_subset = get_subset_replies(keywords_subset, fox_tweets, fox_replies) 
 
 
 

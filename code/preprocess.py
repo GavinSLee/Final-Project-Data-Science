@@ -447,13 +447,37 @@ def count_all_data_points():
   count_data_points(fox_tweets_clean_path)
   count_data_points(fox_replies_clean_path)
   count_data_points(cnn_tweets_clean_path) 
-  count_data_points(cnn_replies_clean_path) 
+  count_data_points(cnn_replies_clean_path)
+
+def convert_sentiment_score(replies_path, write_path):
+  with open(replies_path, 'r') as f:
+    replies = json.load(f)  
+
+  for reply in replies:
+    sentiment_probability = reply["sentiment_score"]
+    reply.pop("sentiment_score")
+    reply["sentiment_probability"] = sentiment_probability 
+    sentiment = reply["sentiment_label"]
+
+    if sentiment == "Negative":
+      reply["adjusted_sentiment_score"] = -1 * sentiment_probability 
+    elif sentiment == "Neutral":
+      reply["adjusted_sentiment_score"] = 0 
+    else: 
+      reply["adjusted_sentiment_score"] = 1 * sentiment_probability 
+  
+  with open(write_path, 'w') as f:
+    json.dump(replies, f) 
 
 def main():
   # preprocess_news_tweets_files_final() 
   # preprocess_replies_tweets_files_final() 
   # create_samples() 
-  count_all_data_points() 
+  # count_all_data_points() 
+  replies_path = "../data_clean/fox_replies_clean.json"
+  write_path = "../data_clean/fox_replies_clean_test.json"
+
+  convert_sentiment_score(replies_path, write_path) 
   
 if __name__ == "__main__":
     main() 
