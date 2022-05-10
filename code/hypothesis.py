@@ -143,15 +143,73 @@ def calc_ci_range(p1, n1, p2, n2):
     return ci_range(diff, std_err)
 
 
+########## Hypothesis Two ###########
+
+
+def hypothesis_two():
+    """
+    We want to determine the average sentiment of reply tweets for certain covid keywords differs between Fox & CNN. 
+    """
+
+    cnn_tweets = load_json("../data_clean/cnn_tweets_clean.json")
+    cnn_replies = load_json("../data_clean/fox_tweets_clean.json") 
+
+    fox_tweets = load_json("../data_clean/fox_tweets_clean.json") 
+    fox_replies = load_json("../data_clean/fox_replies_clean.json") 
+
+    
+    # First, get replies that correspond to the list of covid keywords that we want
+    keywords_subset = {"mask"}
+    cnn_replies_sublist = get_sublist_replies(keywords_subset, cnn_tweets, cnn_replies) 
+    fox_replies_sublist = get_sublist_replies(keywords_subset, fox_tweets, fox_replies) 
+
+    cnn_sentiment_scores = get_sentiment_scores_list(cnn_replies_sublist) 
+    fox_sentiment_scores = get_sentiment_scores_list(fox_replies_sublist) 
+    # print(cnn_sentiment_scores)
+    # print(fox_sentiment_scores)
+
+    tstats, p_value = two_sample_ttest(cnn_sentiment_scores, fox_sentiment_scores) 
+
+
+def get_sublist_replies(covid_keywords_set, tweets, replies):
+    # First, iterate through tweets and see if it contains one of the covid keywords. If it does, append the tweet id to a list of tweet_ids.
+
+    tweet_ids_set = set() 
+
+    for tweet in tweets:
+        keywords = tweet["keywords"]
+        tweet_id = tweet["id"]
+        for keyword in keywords:
+            if keyword in covid_keywords_set: 
+                tweet_ids_set.add(tweet_id) 
+                break 
+    
+    reply_subset = [] 
+    # Then, get subset of replies in which the reply has a conversation ID that matches one of the keys in the tweet_ids_set
+    for reply in replies: 
+        conversation_id = reply["conversation_id"]
+        if conversation_id in tweet_ids_set:
+            reply_subset.append(reply)
+
+    return reply_subset  
+        
+
+def get_sentiment_scores_list(replies_subset):
+    sentiment_scores = [] 
+    for reply in replies_subset:
+        sentiment_score = reply["adjusted_sentiment_score"]
+        sentiment_scores.append(sentiment_score) 
+    
+    return sentiment_scores 
 
 ########## Hypothesis Three ###########
 
+"""
+Hypothesis 3: Does a tweet containing a certain COVID keyword lead to virality? 
 
 """
-Hypothesis 3: Relationship between keyword vs virality of the content
-"""
 def hypothesis3(): 
-    MIN_VIRAL = 800 #viral posts must be 800 and over
+    MIN_VIRAL = 800 # viral posts must be 800 and over
     cnn_tweets_read_path = "../data_clean/cnn_tweets_clean.json"
     fox_tweets_read_path = "../data_clean/fox_tweets_clean.json"
     out_path = "../data_clean/hypothesis3.json"
@@ -180,7 +238,7 @@ def hypothesis3():
 
 
 
-############################## OLD WORK (might be useful for visualization later #####################################
+############################## OLD WORK (might be useful for visualization later) #####################################
 """
 Hypothesis #3a
 What COVID keywords do the tweets need to contain in order for the tweet to have a high virality number?
@@ -243,75 +301,11 @@ def keywords_with_virality_per_month():
     save_json(out_path, result)
 
 
-        
-def get_sublist_replies(covid_keywords_set, tweets, replies):
-    # First, iterate through tweets and see if it contains one of the covid keywords. If it does, append the tweet id to a list of tweet_ids.
-
-    tweet_ids_set = set() 
-
-    for tweet in tweets:
-        keywords = tweet["keywords"]
-        tweet_id = tweet["id"]
-        for keyword in keywords:
-            if keyword in covid_keywords_set: 
-                tweet_ids_set.add(tweet_id) 
-                break 
-    
-    reply_subset = [] 
-    # Then, get subset of replies in which the reply has a conversation ID that matches one of the keys in the tweet_ids_set
-    for reply in replies: 
-        conversation_id = reply["conversation_id"]
-        if conversation_id in tweet_ids_set:
-            reply_subset.append(reply)
-
-    return reply_subset  
-        
-
-def get_sentiment_scores_list(replies_subset):
-    sentiment_scores = [] 
-    for reply in replies_subset:
-        sentiment_score = reply["adjusted_sentiment_score"]
-        sentiment_scores.append(sentiment_score) 
-    
-    return sentiment_scores 
-
-def hypothesis2():
-    """
-    We want to determine the average sentiment of reply tweets for certain covid keywords differs between Fox & CNN. 
-    """
-    cnn_tweets_path = "../data_clean/cnn_tweets_clean.json"
-    cnn_replies_path = "../data_clean/cnn_replies_clean.json"
-
-    fox_tweets_path = "../data_clean/fox_tweets_clean.json"
-    fox_replies_path = "../data_clean/fox_replies_clean.json"
-
-    cnn_tweets = load_json(cnn_tweets_path)
-    cnn_replies = load_json(cnn_replies_path) 
-
-    fox_tweets = load_json(fox_tweets_path) 
-    fox_replies = load_json(fox_replies_path) 
-
-    
-    # First, get replies that correspond to the list of covid keywords that we want
-    keywords_subset = {"mask"}
-    cnn_replies_sublist = get_sublist_replies(keywords_subset, cnn_tweets, cnn_replies) 
-    fox_replies_sublist = get_sublist_replies(keywords_subset, fox_tweets, fox_replies) 
-
-    cnn_sentiment_scores = get_sentiment_scores_list(cnn_replies_sublist) 
-    fox_sentiment_scores = get_sentiment_scores_list(fox_replies_sublist) 
-    # print(cnn_sentiment_scores)
-    # print(fox_sentiment_scores)
-
-    tstats, p_value = two_sample_ttest(cnn_sentiment_scores, fox_sentiment_scores) 
-
-
 def main():
 
     hyp_one_result = hypothesis_one() 
     # hyp_two_result = hypothesis_two() 
     # hyp_three_result = hypothesis_three()  
-
-    print(hyp_one_result) 
 
 
 if __name__ == "__main__":

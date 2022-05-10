@@ -215,6 +215,18 @@ def assign_keywords(tweets):
   
   return tweets
 
+def calculate_total_virality(tweets):
+  for tweet in tweets:
+    reply_count = tweet["reply_count"]
+    retweet_count = tweet["quote_count"]
+    like_count = tweet["like_count"]
+    quote_count = tweet["quote_count"]
+
+    virality = reply_count + retweet_count + like_count + quote_count
+    tweet["virality"] = virality 
+  return tweets 
+
+
 def convert_news_jsonl_to_json(read_path, save_path):
   """
   Cleans up a dirty news tweets jsonl file and writes the data to a clean json file. 
@@ -471,8 +483,8 @@ def main():
   # cnn_replies_list = load_json("../data_clean/cnn_replies_clean.json")
   # fox_replies_list = load_json("../data_clean/fox_replies_clean.json")
 
-  cnn_tweets_list = assign_keywords(cnn_tweets_list) 
-  fox_tweets_list = assign_keywords(fox_tweets_list) 
+  cnn_tweets_list = calculate_total_virality(cnn_tweets_list) 
+  fox_tweets_list = calculate_total_virality(fox_tweets_list) 
 
   save_json("../data_clean/cnn_tweets_clean.json", cnn_tweets_list)
   save_json("../data_clean/fox_tweets_clean.json", fox_tweets_list)
