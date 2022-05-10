@@ -48,17 +48,6 @@ def two_sample_ttest(values_a, values_b):
     return tstats, pvalue
 
 """
-Calculates tweet_virality. Datum represents tweet objects in tweets_clean.json
-Make sure tweets are from tweets_clean.json files
-"""
-def tweet_virality(datum):
-    assert("reply_count" in datum)
-    assert("retweet_count" in datum)
-    assert("like_count" in datum)
-    assert("quote_count" in datum)
-    return datum["reply_count"] + datum["retweet_count"] + datum["like_count"] + datum["quote_count"]
-
-"""
 Helper that loads json objects
 """
 def load_json(path):
@@ -202,17 +191,21 @@ def get_sentiment_scores_list(replies_subset):
     
     return sentiment_scores 
 
-########## Hypothesis Three ###########
+
+########## Hypothesis Three (OLD) ###########
 
 """
 Hypothesis 3: Does a tweet containing a certain COVID keyword lead to virality? 
 
+Null Hypothesis: No relationship exists between the two categorical variables. 
+Reject if the p-value is less than .05. 
+
 """
-def hypothesis3(): 
+def hypothesis_three(): 
     MIN_VIRAL = 800 # viral posts must be 800 and over
     cnn_tweets_read_path = "../data_clean/cnn_tweets_clean.json"
     fox_tweets_read_path = "../data_clean/fox_tweets_clean.json"
-    out_path = "../data_clean/hypothesis3.json"
+    out_path = "../data_hypotheses/hypothesis_3.json"
     all_tweets = load_json(cnn_tweets_read_path) + load_json(fox_tweets_read_path)
     result = {}
     for keyword in terms:
@@ -230,15 +223,20 @@ def hypothesis3():
         if not np.any(has_keyword_list): continue
         df = pd.DataFrame(data={"keyword" : has_keyword_list, "viral": is_viral})
         tstats, pval = chisquared_independence_test(df, "keyword", "viral")
-        result[keyword] = {"tstats": tstats, "p-value": pval}
+        result[keyword] = {"chi2": tstats, "p-value": pval}
     save_json(out_path, result)
 
+"""
+Calculates tweet_virality. Datum represents tweet objects in tweets_clean.json
+Make sure tweets are from tweets_clean.json files
+"""
+def tweet_virality(datum):
+    assert("reply_count" in datum)
+    assert("retweet_count" in datum)
+    assert("like_count" in datum)
+    assert("quote_count" in datum)
+    return datum["reply_count"] + datum["retweet_count"] + datum["like_count"] + datum["quote_count"]
 
-
-
-
-
-############################## OLD WORK (might be useful for visualization later) #####################################
 """
 Hypothesis #3a
 What COVID keywords do the tweets need to contain in order for the tweet to have a high virality number?
@@ -300,12 +298,11 @@ def keywords_with_virality_per_month():
         result[keyword] = data
     save_json(out_path, result)
 
-
 def main():
 
-    hyp_one_result = hypothesis_one() 
+    # hyp_one_result = hypothesis_one() 
     # hyp_two_result = hypothesis_two() 
-    # hyp_three_result = hypothesis_three()  
+    hyp_three_result = hypothesis_three()  
 
 
 if __name__ == "__main__":
