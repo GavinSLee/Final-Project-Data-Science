@@ -89,8 +89,8 @@ def hypothesis_one():
     """
     cnn_tweets_list = load_json("../data_clean/cnn_tweets_clean.json")
     fox_tweets_list = load_json("../data_clean/fox_tweets_clean.json")
-    ci_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "fauci": [], "vaccine": [], "pfizer": "moderna"}
-    prop_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "fauci": [], "vaccine": [], "pfizer": "moderna"}
+    ci_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "cuomo": [], "abbott": [], "fauci": []}
+    prop_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "cuomo": [], "abbott": [], "fauci": []}
 
     for term in ci_dict:
         metrics = get_ci_range(term, cnn_tweets_list, fox_tweets_list)     

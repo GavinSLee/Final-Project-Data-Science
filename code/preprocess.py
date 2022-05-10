@@ -89,6 +89,7 @@ terms = [
   "cnn", 
   "fauci",
   "pence",
+  "abbott",
 
   #transportations
   "airport", 

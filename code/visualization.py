@@ -1,9 +1,12 @@
 import json 
 import operator
+import pandas as pd 
+import numpy as np 
 from datetime import datetime, timedelta
 from matplotlib import pyplot as plt
 from matplotlib import dates as mpl_dates
 from matplotlib.dates import DateFormatter
+
 
 ############# Visualization One #############
 
@@ -192,18 +195,46 @@ def visualization_one():
     
         
     
-############# Visualization Two #############
+############# Visualization One #############
 
 
 def visualization_two():
     pass 
 
 
+############# Visualization for Hypothesis One #############
+
+def visualization_one_hyp():
+    keywords = ["trump", "pence", "biden", "harris", "abbott", "cuomo", "fauci"]
+    cnn_proportions = [0.056, 0.007, 0.051, 0.002, 0.004, 0.006, 0.024]
+    fox_proportions = [0.059, 0.005, 0.12, 0.008, 0.007, 0.037, 0.036]
+
+    prop_dict = {"keywords": keywords, "cnn proportions" : cnn_proportions, "fox proportions": fox_proportions}
+
+    # df = pd.DataFrame(prop_dict) 
+    
+
+    x_axis = np.arange(len(keywords))
+
+
+    plt.figure(figsize = (8, 8))
+    plt.bar(x_axis - 0.2, cnn_proportions, 0.4, label = 'CNN Proportions', color = 'red')
+    plt.bar(x_axis + 0.2, fox_proportions, 0.4, label = 'Fox Proportions', color = 'blue')
+    plt.xticks(x_axis, keywords)
+    plt.xlabel("keywords")
+    plt.ylabel("proportion")
+    plt.title("Proportion of News Tweets That Contain Keyword for CNN vs Fox")
+    plt.legend() 
+
+    plt.show() 
+
+
+
 ############# Main #############
 
 
 def main():
-    visualization_one() 
+    visualization_one_hyp() 
 
 if __name__ == "__main__":
     main() 
