@@ -15,42 +15,41 @@ terms = [
   "droplet",
   "emergency use authorization",
   "endemic",
-  "Epidemic",
-  "Flattening the curve",
-  "Herd immunity",
-  "Hydroxychloroquine",
-  "Incubation period",
-  "Infusion",
-  "N95 respirator",
-  "N95",
-  "N95 mask",
+  "epidemic",
+  "flattening the curve",
+  "herd immunity",
+  "hydroxychloroquine",
+  "incubation period",
+  "infusion",
+  "n95 respirator",
+  "n95",
+  "n95 mask",
   "mask",
-  "Outbreak",
-  "Pandemic",
-  "Paxlovid",
-  "PCR test",
-  "PCR",
-  "Personal protective equipment",
-  "PPE",
-  "Pre-symptomatic",
-  "Quarantine",
-  "R0",
-  "Remdesivir",
-  "Veklury",
-  "Self-isolation",
-  "Serology test",
-  "Social distancing",
-  "State of emergency",
-  "Swab test",
-  "Tocilizumab",
-  "Actemra",
-  "Trial",
-  "Vaccine",
-  "Variant",
-  "Ventilator",
-  "Viral load",
-  "Viral shedding",
-  "Viral test",
+  "outbreak",
+  "pandemic",
+  "paxlovid",
+  "pcr test",
+  "pcr",
+  "personal protective equipment",
+  "ppe",
+  "pre-symptomatic",
+  "quarantine",
+  "remdesivir",
+  "veklury",
+  "self-isolation",
+  "serology test",
+  "social distancing",
+  "state of emergency",
+  "swab test",
+  "tocilizumab",
+  "actemra",
+  "trial",
+  "vaccine",
+  "variant",
+  "ventilator",
+  "viral load",
+  "viral shedding",
+  "viral test",
 
   # TODO: get as many terms as you can!!!
   # For instance, political words like Biden / Trump, organizations like CDC, etc
@@ -67,16 +66,16 @@ terms = [
   "biden", 
   "trump",
   "white house", 
-  "CDC", 
-  "Center for Disease Control"
-  "WHO", 
-  "World Health Organization", 
+  "cdc", 
+  "center for disease control"
+  "who", 
+  "world health organization", 
   "shutdown",
   "lockdown",
   "restrictions",
   "democrat",
   "republican",
-  "GOP",
+  "gop",
   "senate",
   "house",
   "house of representatives",
@@ -84,68 +83,65 @@ terms = [
   "pelosi",
   "romney",
   "sanders",
-  "Boris Johnson",
+  "boris johnson",
   "cuomo",
   "fox",
   "cnn", 
-  "fauci"
-
-
-  
+  "fauci",
+  "pence",
 
   #transportations
-  "Airport", 
-  "Bus", 
-  "Public Transportation", 
-  "Ship", 
-  "Cruise",
+  "airport", 
+  "bus", 
+  "public transportation", 
+  "ship", 
+  "cruise",
   "airplane",
   "airline",
   
   #Location
-  "USA",
-  "United States",
-  "New York", 
-  "Rhode Island", 
-  "Massachusetts", 
-  "California", 
-  "Texas", 
-  "Guam",
-  "Boston", 
-  "New York", 
-  "Los Angeles",
-  "Connecticut",
-  "Rhode Island",
-  "Pennsylvania", 
-  "Georgia", 
-  "Atlanta", 
-  "UK", 
-  "United Kingdom", 
-  "Germany", 
-  "Australia",
-  "China", 
-  "Beijing", 
-  "Taiwan", 
-  "Wuhan", 
-  "Japan", 
-  "India",
-  "Tokyo",
-  "South Africa", 
-  "South Korea", 
-  "North Korea", 
-  "Vietnam", 
-  "EU", 
-  "European Union",
-  "Russia", 
-  'Brittain',
+  "usa",
+  "united_states",
+  "new york", 
+  "rhode island", 
+  "massachusetts", 
+  "california", 
+  "texas", 
+  "boston", 
+  "new york", 
+  "los angeles",
+  "connecticut",
+  "rhode island",
+  "pennsylvania", 
+  "georgia", 
+  "atlanta", 
+  "uk", 
+  "united kingdom", 
+  "germany", 
+  "australia",
+  "china", 
+  "beijing", 
+  "taiwan", 
+  "wuhan", 
+  "japan", 
+  "india",
+  "tokyo",
+  "south africa", 
+  "south korea", 
+  "north korea", 
+  "vietnam", 
+  "eu", 
+  "european union",
+  "russia", 
+  'britain',
 
   #market related
-  "Stock",
-  "Supply Chain",
-  "Inflation",
-  "Deflation",
-  "Market",
-  "Wall Street",
+  "stock",
+  "supply chain",
+  "inflation",
+  "deflation",
+  "market",
+  "wall street",
   "economy",
   "currency",
   "commerce",
@@ -185,17 +181,15 @@ terms = [
   "fake news",
   "death",
   "casualty",
-  "death toll",
-  
-
+  "death toll"
 ]
 
-def get_tweets_from_json(path):
+def load_json(path):
   with open(path, ) as f:
     tweets = json.load(f)
     return tweets
 
-def save_tweets_to_json(path, tweets):
+def save_json(path, tweets):
   with open(path, 'w') as outfile:
       json.dump(tweets, outfile)
       print("Saved to " + path)
@@ -211,17 +205,13 @@ def remove_duplicate_tweets(tweets):
 
 def assign_keywords(tweets):
   for tweet in tweets:
+    keywords = [] 
     content = tweet["text"].lower()
-    keywords = set()
     for term in terms:
-      term = term.lower()
-      firstIndex = 0
-      lastIndex = len(term)
-      for i in range(len(content) - lastIndex):
-        substring = content[i + firstIndex : i + lastIndex]
-        if substring == term:
-          keywords.add(term)
-    tweet["keywords"] = list(keywords)
+      if term in content:
+        keywords.append(term)
+    tweet["keywords"] = keywords  
+  
   return tweets
 
 def convert_news_jsonl_to_json(read_path, save_path):
@@ -291,10 +281,10 @@ def parse_clean_news_tweets_file(read_path, save_path):
   """
   These are the functions Andrew wrote to remove duplicate tweets and assign keywords. 
   """
-  tweets = get_tweets_from_json(read_path)
+  tweets = load_json(read_path)
   tweets = remove_duplicate_tweets(tweets)
   tweets = assign_keywords(tweets)
-  save_tweets_to_json(save_path, tweets)
+  save_json(save_path, tweets)
 
 
 def preprocess_news_tweets_files_final():
@@ -473,10 +463,19 @@ def main():
   # preprocess_replies_tweets_files_final() 
   # create_samples() 
   # count_all_data_points() 
-  replies_path = "../data_clean/fox_replies_clean.json"
-  write_path = "../data_clean/fox_replies_clean_test.json"
+  
+  cnn_tweets_list = load_json("../data_clean/cnn_tweets_clean.json")
+  fox_tweets_list = load_json("../data_clean/fox_tweets_clean.json")
 
-  convert_sentiment_score(replies_path, write_path) 
+  # cnn_replies_list = load_json("../data_clean/cnn_replies_clean.json")
+  # fox_replies_list = load_json("../data_clean/fox_replies_clean.json")
+
+  cnn_tweets_list = assign_keywords(cnn_tweets_list) 
+  fox_tweets_list = assign_keywords(fox_tweets_list) 
+
+  save_json("../data_clean/cnn_tweets_clean.json", cnn_tweets_list)
+  save_json("../data_clean/fox_tweets_clean.json", fox_tweets_list)
+
   
 if __name__ == "__main__":
     main() 

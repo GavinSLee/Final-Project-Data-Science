@@ -6,7 +6,8 @@ import pandas as pd
 from scipy.stats import ttest_1samp, ttest_ind, ttest_rel, chi2_contingency
 
 
-############## STATS TESTS ##########################
+########## Util Functions ###########
+
 def chisquared_independence_test(df, column_a_name, column_b_name):
     ## Stencil: Error check input - do not modify this part
     # assert all_variable_names_in_df([column_a_name, column_b_name], df)
@@ -71,42 +72,81 @@ def save_json(path, obj):
     with open(path, 'w') as f:
         return json.dump(obj, f)
 
-##################### HYPOTHESIS #################################
 
-"""
-Hypothesis 1: Frequency of each keyword used between Fox and CNN
-"""        
-def hypothesis1():
-    cnn_freq_read_path = "../data_clean/cnn_keyword_freq.json"
-    fox_freq_read_path = "../data_clean/fox_keyword_freq.json"
-    out_path = "../data_clean/hypothesis1.json"
-    result = {}
-    cnn_freq = load_json(cnn_freq_read_path)[0]["CNN"]
-    fox_freq = load_json(fox_freq_read_path)[0]["Fox News"]
-    for keyword in terms:
-        is_fox = []
-        keyword_freq = []
-        for month in cnn_freq:
-            cnn_freq_data = cnn_freq[month]
-            fox_freq_data = fox_freq[month]
-            cnn_keyword_freq = 0
-            fox_keyword_freq = 0
-            if keyword in cnn_freq_data:
-                cnn_keyword_freq = cnn_freq_data[keyword]
-            if keyword in fox_freq_data:
-                fox_keyword_freq = fox_freq_data[keyword]
-            is_fox.append(0)
-            keyword_freq.append(cnn_keyword_freq)
-            is_fox.append(1)
-            keyword_freq.append(fox_keyword_freq)
-        # df = pd.DataFrame(data={"fox" : is_fox, "frequency": keyword_freq})
-        tstats, pval = two_sample_ttest(is_fox, keyword_freq)
-        result[keyword] = {"tstats" : tstats, "p-value": pval}
-    save_json(out_path, result)
+########## Hypothesis One ###########
+
+
+def hypothesis_one():
+    """
+    Hypothesis 1: Does CNN focus more on certain keywords more than Fox? 
+
+    To do this, we state the null hypothesis: there is no difference in the population proportion between Fox News and CNN for tweets that contain some certain keyword. 
+
+    Article reference: https://www.dataquest.io/blog/tutorial-text-analysis-python-test-hypothesis/
+
+    Returns the following: {keyword : (conf lower, conf upper)}, {keyword: (cnn prop, fox prop)}
+
+    """
+    cnn_tweets_list = load_json("../data_clean/cnn_tweets_clean.json")
+    fox_tweets_list = load_json("../data_clean/fox_tweets_clean.json")
+    ci_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "fauci": [], "vaccine": [], "pfizer": "moderna"}
+    prop_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "fauci": [], "vaccine": [], "pfizer": "moderna"}
+
+    for term in ci_dict:
+        metrics = get_ci_range(term, cnn_tweets_list, fox_tweets_list)     
+        conf_int = metrics[0] 
+        props = metrics[1] 
+        ci_dict[term] = conf_int 
+        prop_dict[term] = props 
+
+    return [ci_dict, prop_dict] 
+
+def get_ci_range(word, cnn_tweets_list, fox_tweets_list):
+
+    cnn_tweets_containing_word = [] 
+    for tweet in cnn_tweets_list:
+        tweet_keywords = tweet["keywords"]
+        for keyword in tweet_keywords:
+            if word == keyword:
+                cnn_tweets_containing_word.append(tweet) 
+                break 
     
-
-
+    fox_tweets_containing_word = [] 
+    for tweet in fox_tweets_list:
+        tweet_keywords = tweet["keywords"]
+        for keyword in tweet_keywords:
+            if word == keyword:
+                fox_tweets_containing_word.append(tweet) 
+                break 
     
+    num_cnn_tweets_contain_word = len(cnn_tweets_containing_word) 
+    num_cnn_tweets = len(cnn_tweets_list)
+
+    cnn_word_prop = num_cnn_tweets_contain_word / num_cnn_tweets 
+
+    num_fox_tweets_contain_word = len(fox_tweets_containing_word) 
+    num_fox_tweets = len(fox_tweets_list) 
+
+    fox_word_prop = num_fox_tweets_contain_word / num_fox_tweets 
+
+    return [calc_ci_range(cnn_word_prop, num_cnn_tweets, fox_word_prop, num_cnn_tweets), (cnn_word_prop, fox_word_prop)]
+
+def standard_err(p1, n1, p2, n2):
+    return np.sqrt((p1* (1-p1) / n1) + (p2 * (1-p2) / n2))
+
+def ci_range(diff, std_err, cv = 1.96):
+    return (diff - cv * std_err, diff + cv * std_err)
+
+def calc_ci_range(p1, n1, p2, n2):
+    std_err = standard_err(p1, n1, p2, n2)
+    diff = p1-p2
+    return ci_range(diff, std_err)
+
+
+
+########## Hypothesis Three ###########
+
+
 """
 Hypothesis 3: Relationship between keyword vs virality of the content
 """
@@ -266,8 +306,12 @@ def hypothesis2():
 
 
 def main():
-    # hypothesis1()
-    hypothesis2() 
+
+    hyp_one_result = hypothesis_one() 
+    # hyp_two_result = hypothesis_two() 
+    # hyp_three_result = hypothesis_three()  
+
+    print(hyp_one_result) 
 
 
 if __name__ == "__main__":
