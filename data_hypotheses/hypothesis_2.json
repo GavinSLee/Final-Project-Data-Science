@@ -1,0 +1,896 @@
+{
+    "aerosol": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.45025724172592163,
+        "fox_avg_sentiment": 0
+    },
+    "antibody": {
+        "tstats": -1.229980394602703,
+        "p-value": 0.2192805458979029,
+        "cnn_avg_sentiment": -0.3244732932320663,
+        "fox_avg_sentiment": -0.2659000011072272
+    },
+    "antibody test": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.40696405976602473,
+        "fox_avg_sentiment": 0
+    },
+    "antigen test": {
+        "tstats": 2.007877498625609,
+        "p-value": 0.04608795979620277,
+        "cnn_avg_sentiment": -0.30239754429329996,
+        "fox_avg_sentiment": -0.6967050830523173
+    },
+    "asymptomaticcontact tracing": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "convalescent plasma therapy": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.2785497669662748,
+        "fox_avg_sentiment": 0
+    },
+    "diagnostic test": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "drive-thru testing": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "droplet": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.35156658444649136,
+        "fox_avg_sentiment": 0
+    },
+    "emergency use authorization": {
+        "tstats": 1.5055620046680087,
+        "p-value": 0.1327374912348678,
+        "cnn_avg_sentiment": -0.25574236922648363,
+        "fox_avg_sentiment": -0.429056698625738
+    },
+    "endemic": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.29576360806822777,
+        "fox_avg_sentiment": 0
+    },
+    "epidemic": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.28827270726824916,
+        "fox_avg_sentiment": 0
+    },
+    "flattening the curve": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "herd immunity": {
+        "tstats": 0.8844303130837827,
+        "p-value": 0.37736794329719126,
+        "cnn_avg_sentiment": -0.342777397702722,
+        "fox_avg_sentiment": -0.4112721383571625
+    },
+    "hydroxychloroquine": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.2178701201081276,
+        "fox_avg_sentiment": 0
+    },
+    "incubation period": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "infusion": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "n95 respirator": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "n95": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0.12935814675357607,
+        "fox_avg_sentiment": 0
+    },
+    "n95 mask": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0.17594867093222483,
+        "fox_avg_sentiment": 0
+    },
+    "mask": {
+        "tstats": -1.0824793393191614,
+        "p-value": 0.27910924612635507,
+        "cnn_avg_sentiment": -0.3129604074530345,
+        "fox_avg_sentiment": -0.2954883643911832
+    },
+    "outbreak": {
+        "tstats": 1.105314710757533,
+        "p-value": 0.2691143083939109,
+        "cnn_avg_sentiment": -0.3468183189197376,
+        "fox_avg_sentiment": -0.36924703322889235
+    },
+    "pandemic": {
+        "tstats": 1.0603812483930335,
+        "p-value": 0.2889931534243839,
+        "cnn_avg_sentiment": -0.3043188472781654,
+        "fox_avg_sentiment": -0.3184478882158923
+    },
+    "paxlovid": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "pcr test": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "pcr": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": -0.3424319859061922
+    },
+    "personal protective equipment": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.34929214546392706,
+        "fox_avg_sentiment": 0
+    },
+    "ppe": {
+        "tstats": 1.2416438140114352,
+        "p-value": 0.21448613923674328,
+        "cnn_avg_sentiment": -0.30458759733736357,
+        "fox_avg_sentiment": -0.33527465573322013
+    },
+    "pre-symptomatic": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "quarantine": {
+        "tstats": 0.7957479231524751,
+        "p-value": 0.4263653574940859,
+        "cnn_avg_sentiment": -0.2589528623870329,
+        "fox_avg_sentiment": -0.2849219656284945
+    },
+    "remdesivir": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.26898051147107727,
+        "fox_avg_sentiment": 0
+    },
+    "veklury": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "self-isolation": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.2230927708901857,
+        "fox_avg_sentiment": 0
+    },
+    "serology test": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "social distancing": {
+        "tstats": 3.190647475500622,
+        "p-value": 0.0015356672323662331,
+        "cnn_avg_sentiment": -0.30111478454262547,
+        "fox_avg_sentiment": -0.544902673959732
+    },
+    "state of emergency": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.49437866111596424,
+        "fox_avg_sentiment": 0
+    },
+    "swab test": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.32213720430930454,
+        "fox_avg_sentiment": 0
+    },
+    "tocilizumab": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "actemra": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "trial": {
+        "tstats": 3.407382818361614,
+        "p-value": 0.0006824796835089439,
+        "cnn_avg_sentiment": -0.22253932137895563,
+        "fox_avg_sentiment": -0.3540183070867035
+    },
+    "vaccine": {
+        "tstats": 2.8132207992346085,
+        "p-value": 0.0049098553895971795,
+        "cnn_avg_sentiment": -0.24246529609860384,
+        "fox_avg_sentiment": -0.2635922543777871
+    },
+    "variant": {
+        "tstats": -2.162175167494485,
+        "p-value": 0.030644588537863542,
+        "cnn_avg_sentiment": -0.31920620366185903,
+        "fox_avg_sentiment": -0.290929808059296
+    },
+    "ventilator": {
+        "tstats": 1.5190983799857767,
+        "p-value": 0.12931444080090015,
+        "cnn_avg_sentiment": -0.1110193285153958,
+        "fox_avg_sentiment": -0.22809295075527136
+    },
+    "viral load": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "viral shedding": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "viral test": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "hospital": {
+        "tstats": -0.4701450315243196,
+        "p-value": 0.6382742677918518,
+        "cnn_avg_sentiment": -0.3252674820772745,
+        "fox_avg_sentiment": -0.3174093718580205
+    },
+    "surgery": {
+        "tstats": 2.333224307645165,
+        "p-value": 0.02142135219291542,
+        "cnn_avg_sentiment": -0.2615392482839525,
+        "fox_avg_sentiment": -0.4651686280965805
+    },
+    "respirator": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.2998571657510691,
+        "fox_avg_sentiment": 0
+    },
+    "emergency room": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.3318925020011032,
+        "fox_avg_sentiment": 0
+    },
+    "emergency": {
+        "tstats": 0.7566442943815554,
+        "p-value": 0.4493720756087701,
+        "cnn_avg_sentiment": -0.289847369220135,
+        "fox_avg_sentiment": -0.3163348520384695
+    },
+    "biden": {
+        "tstats": 5.835100902035842,
+        "p-value": 5.534632362307388e-09,
+        "cnn_avg_sentiment": -0.242097215057806,
+        "fox_avg_sentiment": -0.3059722136311835
+    },
+    "trump": {
+        "tstats": -3.2792700388002265,
+        "p-value": 0.0010446436778038552,
+        "cnn_avg_sentiment": -0.37501126271039126,
+        "fox_avg_sentiment": -0.3404283071236222
+    },
+    "white house": {
+        "tstats": -3.2920736658438003,
+        "p-value": 0.0010029627682171809,
+        "cnn_avg_sentiment": -0.36589974148497395,
+        "fox_avg_sentiment": -0.31477021085364476
+    },
+    "cdc": {
+        "tstats": 0.8310189618912281,
+        "p-value": 0.40600765325738,
+        "cnn_avg_sentiment": -0.30361231728907556,
+        "fox_avg_sentiment": -0.3155059108913219
+    },
+    "center for disease controlwho": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "world health organization": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.32553138953130856,
+        "fox_avg_sentiment": 0
+    },
+    "shutdown": {
+        "tstats": -0.8686812424342907,
+        "p-value": 0.38569569743719667,
+        "cnn_avg_sentiment": -0.32172751661097065,
+        "fox_avg_sentiment": -0.2640470503955274
+    },
+    "lockdown": {
+        "tstats": 6.9474309461730765,
+        "p-value": 5.020205416529424e-12,
+        "cnn_avg_sentiment": -0.2520186994715435,
+        "fox_avg_sentiment": -0.40302834792201186
+    },
+    "restrictions": {
+        "tstats": -1.748622498387314,
+        "p-value": 0.08051164940216994,
+        "cnn_avg_sentiment": -0.3489500118145709,
+        "fox_avg_sentiment": -0.3088697646004813
+    },
+    "democrat": {
+        "tstats": 0.487361677203375,
+        "p-value": 0.6260590500067773,
+        "cnn_avg_sentiment": -0.3340601152305938,
+        "fox_avg_sentiment": -0.3452460211484543
+    },
+    "republican": {
+        "tstats": 1.1137046607435108,
+        "p-value": 0.2655184175553882,
+        "cnn_avg_sentiment": -0.38426439457733297,
+        "fox_avg_sentiment": -0.4059391284294617
+    },
+    "gop": {
+        "tstats": -0.9348709974685837,
+        "p-value": 0.3500237244591332,
+        "cnn_avg_sentiment": -0.3926729751638619,
+        "fox_avg_sentiment": -0.3668464910105791
+    },
+    "senate": {
+        "tstats": 0.6962559780304659,
+        "p-value": 0.48642825390325206,
+        "cnn_avg_sentiment": -0.3019114447645394,
+        "fox_avg_sentiment": -0.32449114352464675
+    },
+    "house": {
+        "tstats": -3.143696339702757,
+        "p-value": 0.0016763199665181393,
+        "cnn_avg_sentiment": -0.372175765650832,
+        "fox_avg_sentiment": -0.3324318011655319
+    },
+    "house of representatives": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.3983764492330097,
+        "fox_avg_sentiment": 0
+    },
+    "harris": {
+        "tstats": 2.0085920476165025,
+        "p-value": 0.04492910792433934,
+        "cnn_avg_sentiment": -0.17464652042752424,
+        "fox_avg_sentiment": -0.2529747195148294
+    },
+    "pelosi": {
+        "tstats": -0.031661500791196014,
+        "p-value": 0.974750117839444,
+        "cnn_avg_sentiment": -0.3905258310227259,
+        "fox_avg_sentiment": -0.3893773367883564
+    },
+    "romney": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "sanders": {
+        "tstats": 0.8120935354894788,
+        "p-value": 0.4183068602633273,
+        "cnn_avg_sentiment": -0.24086641669273376,
+        "fox_avg_sentiment": -0.33944609671831133
+    },
+    "boris johnson": {
+        "tstats": 0.5156882713528111,
+        "p-value": 0.6068069281942801,
+        "cnn_avg_sentiment": -0.4039476955511484,
+        "fox_avg_sentiment": -0.4405682670909005
+    },
+    "cuomo": {
+        "tstats": 0.760937079019853,
+        "p-value": 0.4467775180250845,
+        "cnn_avg_sentiment": -0.34015823852347765,
+        "fox_avg_sentiment": -0.36197140881347445
+    },
+    "fox": {
+        "tstats": -0.18395521261630562,
+        "p-value": 0.8540825873301141,
+        "cnn_avg_sentiment": -0.36502947486363924,
+        "fox_avg_sentiment": -0.35336376640160266
+    },
+    "cnn": {
+        "tstats": 1.7036175816699837,
+        "p-value": 0.08850614225385453,
+        "cnn_avg_sentiment": -0.33000612406050067,
+        "fox_avg_sentiment": -0.35647184898455936
+    },
+    "fauci": {
+        "tstats": 2.3195705976812464,
+        "p-value": 0.020410957047391824,
+        "cnn_avg_sentiment": -0.2938673699504376,
+        "fox_avg_sentiment": -0.32941061996127735
+    },
+    "pence": {
+        "tstats": -0.82377026255747,
+        "p-value": 0.410260437246154,
+        "cnn_avg_sentiment": -0.31919818069359096,
+        "fox_avg_sentiment": -0.29093230362098244
+    },
+    "abbott": {
+        "tstats": -0.5242692271105834,
+        "p-value": 0.6002423733301351,
+        "cnn_avg_sentiment": -0.30849817855316297,
+        "fox_avg_sentiment": -0.2886782570630925
+    },
+    "airport": {
+        "tstats": -1.1068983520264597,
+        "p-value": 0.27142440885373975,
+        "cnn_avg_sentiment": -0.2841918267399432,
+        "fox_avg_sentiment": 0.0
+    },
+    "bus": {
+        "tstats": -0.44777575357659777,
+        "p-value": 0.6543788943922402,
+        "cnn_avg_sentiment": -0.33745577380593333,
+        "fox_avg_sentiment": -0.3240296647435709
+    },
+    "public transportation": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.016654112122275612,
+        "fox_avg_sentiment": 0
+    },
+    "ship": {
+        "tstats": 0.44313408147251826,
+        "p-value": 0.6577319812721645,
+        "cnn_avg_sentiment": -0.30708946712141816,
+        "fox_avg_sentiment": -0.31978683093938315
+    },
+    "cruise": {
+        "tstats": 1.5955272935311402,
+        "p-value": 0.11158766876193829,
+        "cnn_avg_sentiment": -0.3691086817355383,
+        "fox_avg_sentiment": -0.7323447585105896
+    },
+    "airplane": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0.09334534406661987,
+        "fox_avg_sentiment": 0
+    },
+    "airline": {
+        "tstats": -2.193620660186076,
+        "p-value": 0.028562481943577765,
+        "cnn_avg_sentiment": -0.28271125177008993,
+        "fox_avg_sentiment": -0.18520024037638375
+    },
+    "usa": {
+        "tstats": -2.6428211551072054,
+        "p-value": 0.008326955980654216,
+        "cnn_avg_sentiment": -0.3888839198144402,
+        "fox_avg_sentiment": -0.3138489758684522
+    },
+    "united_states": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "new york": {
+        "tstats": 3.5594729908269365,
+        "p-value": 0.00037801437251442266,
+        "cnn_avg_sentiment": -0.29429029340136903,
+        "fox_avg_sentiment": -0.37189619369302057
+    },
+    "rhode island": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.48848197643573465,
+        "fox_avg_sentiment": 0
+    },
+    "massachusetts": {
+        "tstats": 1.2747530665359756,
+        "p-value": 0.20390578482929625,
+        "cnn_avg_sentiment": -0.23128448534702908,
+        "fox_avg_sentiment": -0.3223852847897729
+    },
+    "california": {
+        "tstats": 0.006447548868425963,
+        "p-value": 0.9948563135229092,
+        "cnn_avg_sentiment": -0.3107624814772063,
+        "fox_avg_sentiment": -0.31091369746668074
+    },
+    "texas": {
+        "tstats": -0.3045677622011187,
+        "p-value": 0.7607178022713823,
+        "cnn_avg_sentiment": -0.3338353187815486,
+        "fox_avg_sentiment": -0.3277235802141842
+    },
+    "boston": {
+        "tstats": -0.3178249351876352,
+        "p-value": 0.7509704742223057,
+        "cnn_avg_sentiment": -0.26140056784663884,
+        "fox_avg_sentiment": -0.23500046133995056
+    },
+    "los angeles": {
+        "tstats": 1.9097781939405354,
+        "p-value": 0.056744192334945036,
+        "cnn_avg_sentiment": -0.2550856608031976,
+        "fox_avg_sentiment": -0.33871976278596005
+    },
+    "connecticut": {
+        "tstats": 1.8550372452213322,
+        "p-value": 0.0675741018921626,
+        "cnn_avg_sentiment": -0.04974708801660782,
+        "fox_avg_sentiment": -0.2723798534354648
+    },
+    "pennsylvania": {
+        "tstats": -2.6000525144500553,
+        "p-value": 0.010390948618045051,
+        "cnn_avg_sentiment": -0.5077344243015561,
+        "fox_avg_sentiment": -0.3251793308863564
+    },
+    "georgia": {
+        "tstats": -1.211837813228512,
+        "p-value": 0.22604754153985437,
+        "cnn_avg_sentiment": -0.42291905440173105,
+        "fox_avg_sentiment": -0.35730412570030795
+    },
+    "atlanta": {
+        "tstats": -1.3096934681092154,
+        "p-value": 0.19221280109065364,
+        "cnn_avg_sentiment": -0.4771654735128564,
+        "fox_avg_sentiment": -0.38446208717007385
+    },
+    "uk": {
+        "tstats": 4.906586209375791,
+        "p-value": 9.882742542678944e-07,
+        "cnn_avg_sentiment": -0.2841337314597465,
+        "fox_avg_sentiment": -0.389584319424574
+    },
+    "united kingdom": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.3469832432403993,
+        "fox_avg_sentiment": 0
+    },
+    "germany": {
+        "tstats": 1.3386273364672563,
+        "p-value": 0.18278707263650448,
+        "cnn_avg_sentiment": -0.33060810017585757,
+        "fox_avg_sentiment": -0.47332714091647754
+    },
+    "australia": {
+        "tstats": 2.440862741086101,
+        "p-value": 0.014959876368036189,
+        "cnn_avg_sentiment": -0.242137215741269,
+        "fox_avg_sentiment": -0.355084470530462
+    },
+    "china": {
+        "tstats": 2.0990243221257385,
+        "p-value": 0.035912462701155445,
+        "cnn_avg_sentiment": -0.32480442660400666,
+        "fox_avg_sentiment": -0.36605139638394313
+    },
+    "beijing": {
+        "tstats": 0.21797219582794866,
+        "p-value": 0.8276519042585693,
+        "cnn_avg_sentiment": -0.32076910448212154,
+        "fox_avg_sentiment": -0.33812116503715517
+    },
+    "taiwan": {
+        "tstats": 0.4499075958359063,
+        "p-value": 0.6537134384995218,
+        "cnn_avg_sentiment": -0.20329576128950486,
+        "fox_avg_sentiment": -0.3867667615413666
+    },
+    "wuhan": {
+        "tstats": -0.022283159798060427,
+        "p-value": 0.9822242763941502,
+        "cnn_avg_sentiment": -0.35917079568530585,
+        "fox_avg_sentiment": -0.3586799758629207
+    },
+    "japan": {
+        "tstats": -0.9018312750983232,
+        "p-value": 0.36744072616017753,
+        "cnn_avg_sentiment": -0.3433673715224364,
+        "fox_avg_sentiment": -0.2814372608373905
+    },
+    "india": {
+        "tstats": -1.3608174036444156,
+        "p-value": 0.17377760586267818,
+        "cnn_avg_sentiment": -0.33591896587460895,
+        "fox_avg_sentiment": -0.28110803091941877
+    },
+    "tokyo": {
+        "tstats": 0.06047905328653786,
+        "p-value": 0.9518295058930843,
+        "cnn_avg_sentiment": -0.3762214856488364,
+        "fox_avg_sentiment": -0.3854425668716431
+    },
+    "south africa": {
+        "tstats": 0.06666220278901547,
+        "p-value": 0.9468715748389991,
+        "cnn_avg_sentiment": -0.3048964394085762,
+        "fox_avg_sentiment": -0.30785334759018046
+    },
+    "south korea": {
+        "tstats": 0.815940257190022,
+        "p-value": 0.4152062965835689,
+        "cnn_avg_sentiment": -0.28301580281178484,
+        "fox_avg_sentiment": -0.34277143597602844
+    },
+    "north korea": {
+        "tstats": -0.4092875892328295,
+        "p-value": 0.683131764432884,
+        "cnn_avg_sentiment": -0.3932353312318975,
+        "fox_avg_sentiment": -0.335859542787075
+    },
+    "vietnam": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.30273389924656263,
+        "fox_avg_sentiment": 0
+    },
+    "eu": {
+        "tstats": 2.083005987141735,
+        "p-value": 0.03733927651091407,
+        "cnn_avg_sentiment": -0.27396709686690934,
+        "fox_avg_sentiment": -0.3197641742479115
+    },
+    "european union": {
+        "tstats": 1.1304375228195749,
+        "p-value": 0.25961275114949806,
+        "cnn_avg_sentiment": -0.2509869507824381,
+        "fox_avg_sentiment": -0.3980299989382426
+    },
+    "russia": {
+        "tstats": -0.7948630633172915,
+        "p-value": 0.4273409611368366,
+        "cnn_avg_sentiment": -0.3834883226493819,
+        "fox_avg_sentiment": -0.33317933820966467
+    },
+    "britain": {
+        "tstats": 3.4999343404467695,
+        "p-value": 0.0005784986787275457,
+        "cnn_avg_sentiment": -0.22065229882899018,
+        "fox_avg_sentiment": -0.44789628054677827
+    },
+    "stock": {
+        "tstats": -2.760561232190735,
+        "p-value": 0.006241836178336896,
+        "cnn_avg_sentiment": -0.3331779471702046,
+        "fox_avg_sentiment": -0.09353991126527592
+    },
+    "supply chain": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.25378155080895676,
+        "fox_avg_sentiment": 0
+    },
+    "inflation": {
+        "tstats": -0.11751185720843448,
+        "p-value": 0.9066278183262211,
+        "cnn_avg_sentiment": -0.34211722800606176,
+        "fox_avg_sentiment": -0.3319689628481865
+    },
+    "deflation": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "market": {
+        "tstats": 0.7575223799679742,
+        "p-value": 0.4491528420249896,
+        "cnn_avg_sentiment": -0.25193820608889356,
+        "fox_avg_sentiment": -0.3417583729909814
+    },
+    "wall street": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.3377017317310212,
+        "fox_avg_sentiment": 0
+    },
+    "economy": {
+        "tstats": 0.48366697478936516,
+        "p-value": 0.6288242863031548,
+        "cnn_avg_sentiment": -0.34653361989779674,
+        "fox_avg_sentiment": -0.3700399007399877
+    },
+    "currency": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "commerce": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.5745280945301056,
+        "fox_avg_sentiment": 0
+    },
+    "pfizer": {
+        "tstats": 1.5450539603593014,
+        "p-value": 0.12248548025944868,
+        "cnn_avg_sentiment": -0.17623450641286667,
+        "fox_avg_sentiment": -0.21155579645925432
+    },
+    "moderna": {
+        "tstats": 4.7817451516331815,
+        "p-value": 1.959561329481138e-06,
+        "cnn_avg_sentiment": -0.12235381882892896,
+        "fox_avg_sentiment": -0.2705868072489388
+    },
+    "jnjjohnson and johnson": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "booster": {
+        "tstats": 0.8766992558290254,
+        "p-value": 0.3808106250244473,
+        "cnn_avg_sentiment": -0.16059832934559548,
+        "fox_avg_sentiment": -0.18391343160225304
+    },
+    "dose": {
+        "tstats": 3.0945168871789455,
+        "p-value": 0.001995585223816683,
+        "cnn_avg_sentiment": -0.18391770749515654,
+        "fox_avg_sentiment": -0.2643495501263372
+    },
+    "first dose": {
+        "tstats": 0.3391640824102142,
+        "p-value": 0.7347983028682692,
+        "cnn_avg_sentiment": -0.1117172119070272,
+        "fox_avg_sentiment": -0.1428006779640279
+    },
+    "second dose": {
+        "tstats": -1.0686017392796012,
+        "p-value": 0.28741206417984416,
+        "cnn_avg_sentiment": -0.22115061478689313,
+        "fox_avg_sentiment": -0.12446991027447216
+    },
+    "research": {
+        "tstats": -1.6024418324485585,
+        "p-value": 0.10916293675382928,
+        "cnn_avg_sentiment": -0.30549090426169223,
+        "fox_avg_sentiment": -0.2670177910476923
+    },
+    "omicron": {
+        "tstats": -2.6249142620129704,
+        "p-value": 0.008722787878552858,
+        "cnn_avg_sentiment": -0.32561845312714194,
+        "fox_avg_sentiment": -0.2739854471753454
+    },
+    "delta": {
+        "tstats": -1.7026078339365915,
+        "p-value": 0.08881597646258864,
+        "cnn_avg_sentiment": -0.316405685295478,
+        "fox_avg_sentiment": -0.27024686684675303
+    },
+    "positive": {
+        "tstats": -3.81914976637148,
+        "p-value": 0.00013517020007082112,
+        "cnn_avg_sentiment": -0.321725837176457,
+        "fox_avg_sentiment": -0.27436797699350957
+    },
+    "negative": {
+        "tstats": -4.574539823836391,
+        "p-value": 5.5740036453446525e-06,
+        "cnn_avg_sentiment": -0.36311637903704785,
+        "fox_avg_sentiment": -0.17432864311737464
+    },
+    "cough": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "vomit": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "headache": {
+        "tstats": -0.31976049664318357,
+        "p-value": 0.7500158912089705,
+        "cnn_avg_sentiment": -0.3758548179577137,
+        "fox_avg_sentiment": -0.3380542707443237
+    },
+    "nausea": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "chirstian": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "religion": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "religious": {
+        "tstats": 1.612827159841982,
+        "p-value": 0.10739943326774591,
+        "cnn_avg_sentiment": -0.37363531677048356,
+        "fox_avg_sentiment": -0.48376777648925784
+    },
+    "bible": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "fake news": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": -0.4201549585048969,
+        "fox_avg_sentiment": 0
+    },
+    "death": {
+        "tstats": -0.5691928616536697,
+        "p-value": 0.5692500198315921,
+        "cnn_avg_sentiment": -0.39082713988478374,
+        "fox_avg_sentiment": -0.38294084820969854
+    },
+    "casualty": {
+        "tstats": NaN,
+        "p-value": NaN,
+        "cnn_avg_sentiment": 0,
+        "fox_avg_sentiment": 0
+    },
+    "death toll": {
+        "tstats": -0.8584960381142543,
+        "p-value": 0.3909039237343013,
+        "cnn_avg_sentiment": -0.3985021062005343,
+        "fox_avg_sentiment": -0.3669941464791427
+    }
+}

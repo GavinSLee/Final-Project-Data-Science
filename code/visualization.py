@@ -205,9 +205,9 @@ def visualization_two():
 ############# Visualization for Hypothesis One #############
 
 def visualization_one_hyp():
-    keywords = ["trump", "pence", "biden", "harris", "abbott", "cuomo", "fauci"]
-    cnn_proportions = [0.056, 0.007, 0.051, 0.002, 0.004, 0.006, 0.024]
-    fox_proportions = [0.059, 0.005, 0.12, 0.008, 0.007, 0.037, 0.036]
+    keywords = ["trump", "biden", "abbott", "cuomo", "fauci", "democrat", "republican", "vaccine", "mask", "lockdown"]
+    cnn_proportions = [0.056, 0.051, 0.004, 0.006, 0.024, 0.013, 0.017, 0.157, 0.032, 0.017]
+    fox_proportions = [0.059, 0.120, 0.007, 0.037, 0.036, 0.016, 0.015, 0.215, 0.028, 0.017]
 
     prop_dict = {"keywords": keywords, "cnn proportions" : cnn_proportions, "fox proportions": fox_proportions}
 
@@ -217,7 +217,7 @@ def visualization_one_hyp():
     x_axis = np.arange(len(keywords))
 
 
-    plt.figure(figsize = (8, 8))
+    plt.figure(figsize = (10, 16))
     plt.bar(x_axis - 0.2, cnn_proportions, 0.4, label = 'CNN Proportions', color = 'red')
     plt.bar(x_axis + 0.2, fox_proportions, 0.4, label = 'Fox Proportions', color = 'blue')
     plt.xticks(x_axis, keywords)

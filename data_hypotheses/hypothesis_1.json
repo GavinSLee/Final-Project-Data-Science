@@ -1,598 +1,896 @@
 {
-  "aerosol": {
-    "tstats": 6.317318040364437,
-    "p-value": 8.790954535724312e-9
-  },
-  "antibody": {
-    "tstats": 0.26952359366575673,
-    "p-value": 0.7881175502709834
-  },
-  "antibody test": {
-    "tstats": 4.70848291074256,
-    "p-value": 8.591321014394179e-6
-  },
-  "antigen test": {
-    "tstats": 2.4977866308188426,
-    "p-value": 0.014235117777850657
-  },
-  "asymptomaticcontact tracing": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "convalescent plasma therapy": {
-    "tstats": 6.317318040364437,
-    "p-value": 8.790954535724312e-9
-  },
-  "diagnostic test": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "drive-thru testing": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "droplet": {
-    "tstats": 5.067939903934189,
-    "p-value": 2.006677848474344e-6
-  },
-  "emergency use authorization": {
-    "tstats": 0.3838429668464594,
-    "p-value": 0.7019616912232014
-  },
-  "endemic": {
-    "tstats": 6.317318040364437,
-    "p-value": 8.790954535724312e-9
-  },
-  "Epidemic": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Flattening the curve": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Herd immunity": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Hydroxychloroquine": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Incubation period": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Infusion": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "N95 respirator": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "N95": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "N95 mask": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "mask": {
-    "tstats": -4.984313686831843,
-    "p-value": 2.8285951954277567e-6
-  },
-  "Outbreak": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Pandemic": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Paxlovid": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "PCR test": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "PCR": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Personal protective equipment": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "PPE": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Pre-symptomatic": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Quarantine": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "R0": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Remdesivir": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Veklury": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Self-isolation": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Serology test": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Social distancing": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "State of emergency": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Swab test": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Tocilizumab": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Actemra": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Trial": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Vaccine": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Variant": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Ventilator": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Viral load": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Viral shedding": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Viral test": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "hospital": {
-    "tstats": -6.303841079861482,
-    "p-value": 9.34524832074925e-9
-  },
-  "surgery": {
-    "tstats": 5.000000000000002,
-    "p-value": 2.6527796804755076e-6
-  },
-  "respirator": {
-    "tstats": 3.4352645562862842,
-    "p-value": 0.0008827803523197255
-  },
-  "emergency room": {
-    "tstats": 4.70848291074256,
-    "p-value": 8.591321014394179e-6
-  },
-  "emergency": {
-    "tstats": -2.6739515082586527,
-    "p-value": 0.008840335928007424
-  },
-  "biden": {
-    "tstats": -6.283746105332319,
-    "p-value": 1.0236407362470406e-8
-  },
-  "trump": {
-    "tstats": -4.544570356831998,
-    "p-value": 1.6355926219258796e-5
-  },
-  "white house": {
-    "tstats": -5.675875313469382,
-    "p-value": 1.52443388024667e-7
-  },
-  "CDC": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Center for Disease ControlWHO": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "World Health Organization": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "shutdown": {
-    "tstats": 2.950204010522612,
-    "p-value": 0.004007998531875892
-  },
-  "lockdown": {
-    "tstats": -3.728984505704868,
-    "p-value": 0.0003285496123586161
-  },
-  "restrictions": {
-    "tstats": -3.5418193045051187,
-    "p-value": 0.0006205294263483421
-  },
-  "democrat": {
-    "tstats": -2.952285008187728,
-    "p-value": 0.003983391633781915
-  },
-  "republican": {
-    "tstats": -3.5315705707052336,
-    "p-value": 0.0006421242235980475
-  },
-  "GOP": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Dem": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "senate": {
-    "tstats": -0.3282008738534475,
-    "p-value": 0.7434897390054294
-  },
-  "house": {
-    "tstats": -7.158572573517892,
-    "p-value": 1.7812850684509762e-10
-  },
-  "house of representatives": {
-    "tstats": 6.317318040364437,
-    "p-value": 8.790954535724312e-9
-  },
-  "harris": {
-    "tstats": 1.109455979666496,
-    "p-value": 0.2700638122673053
-  },
-  "pelosi": {
-    "tstats": 1.0105869735169402,
-    "p-value": 0.3148084379652988
-  },
-  "romney": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "sanders": {
-    "tstats": 5.399249830687336,
-    "p-value": 5.00999117669106e-7
-  },
-  "Boris Johnson": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "cuomo": {
-    "tstats": -1.8654123083009058,
-    "p-value": 0.06524267497626363
-  },
-  "fox": {
-    "tstats": -0.10431753757408115,
-    "p-value": 0.9171396187841523
-  },
-  "cnn": {
-    "tstats": -5.830469283291409,
-    "p-value": 7.752107610974749e-8
-  },
-  "fauciAirport": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Bus": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Public Transportation": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Ship": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Cruise": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "airplane": {
-    "tstats": 6.317318040364437,
-    "p-value": 8.790954535724312e-9
-  },
-  "airline": {
-    "tstats": -0.2646596104224661,
-    "p-value": 0.7918511436911251
-  },
-  "USA": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "United States": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "New York": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Rhode Island": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Massachusetts": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "California": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Texas": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Guam": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Boston": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Los Angeles": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Connecticut": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Pennsylvania": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Georgia": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Atlanta": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "UK": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "United Kingdom": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Germany": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Australia": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "China": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Beijing": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Taiwan": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Wuhan": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Japan": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "India": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Tokyo": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "South Africa": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "South Korea": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "North Korea": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Vietnam": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "EU": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "European Union": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Russia": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Brittain": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Stock": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Supply Chain": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Inflation": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Deflation": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Market": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "Wall Street": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "economy": {
-    "tstats": 0.5506594287321454,
-    "p-value": 0.583173494709047
-  },
-  "currency": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "commerce": {
-    "tstats": 6.317318040364437,
-    "p-value": 8.790954535724312e-9
-  },
-  "pfizer": {
-    "tstats": -3.727434028145922,
-    "p-value": 0.0003303131815764571
-  },
-  "moderna": {
-    "tstats": -2.5122087331955885,
-    "p-value": 0.01370208964240883
-  },
-  "jnjjohnson and johnson": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "booster": {
-    "tstats": -2.210436859633546,
-    "p-value": 0.02950130532048241
-  },
-  "dose": {
-    "tstats": -3.9851273333531494,
-    "p-value": 0.00013312100253413072
-  },
-  "first dose": {
-    "tstats": 4.059620607953344,
-    "p-value": 0.00010165550440715968
-  },
-  "second dose": {
-    "tstats": 3.7634707651592767,
-    "p-value": 0.00029156170829306403
-  },
-  "research": {
-    "tstats": -4.119777494612711,
-    "p-value": 8.158210240034907e-5
-  },
-  "omicron": {
-    "tstats": -1.2956227091358274,
-    "p-value": 0.19827808335649202
-  },
-  "delta": {
-    "tstats": -1.7545347114081378,
-    "p-value": 0.08259757348692098
-  },
-  "positive": {
-    "tstats": -5.959615983303712,
-    "p-value": 4.3808302435185664e-8
-  },
-  "negative": {
-    "tstats": 0.2271379702278105,
-    "p-value": 0.8208097226298666
-  },
-  "cough": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "vomit": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "headache": {
-    "tstats": 5.399249830687336,
-    "p-value": 5.00999117669106e-7
-  },
-  "nausea": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "chirstian": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "religion": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "religious": {
-    "tstats": 1.8274028173772494,
-    "p-value": 0.07081206825621476
-  },
-  "bible": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "fake news": {
-    "tstats": 5.067939903934189,
-    "p-value": 2.006677848474344e-6
-  },
-  "death": {
-    "tstats": -6.7964436429390185,
-    "p-value": 9.71845422728698e-10
-  },
-  "casualty": {
-    "tstats": 6.855654600401046,
-    "p-value": 7.376743640632753e-10
-  },
-  "death toll": {
-    "tstats": -0.1697547551185136,
-    "p-value": 0.8655678127524128
-  }
+    "aerosol": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "antibody": {
+        "conf lower bound": -0.002434594102624643,
+        "conf upper bound": 0.006268917469774335,
+        "cnn prop": 0.006596306068601583,
+        "fox_prop": 0.004679144385026738
+    },
+    "antibody test": {
+        "conf lower bound": 3.6697091805437416e-05,
+        "conf upper bound": 0.0034813328114487404,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.0
+    },
+    "antigen test": {
+        "conf lower bound": 0.000194246724744317,
+        "conf upper bound": 0.005504914686042113,
+        "cnn prop": 0.003518029903254178,
+        "fox_prop": 0.0006684491978609625
+    },
+    "asymptomaticcontact tracing": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "convalescent plasma therapy": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "diagnostic test": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "drive-thru testing": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "droplet": {
+        "conf lower bound": -0.0001726383099742877,
+        "conf upper bound": 0.002811160737414921,
+        "cnn prop": 0.0013192612137203166,
+        "fox_prop": 0.0
+    },
+    "emergency use authorization": {
+        "conf lower bound": 0.004144685430950801,
+        "conf upper bound": 0.012108565689598165,
+        "cnn prop": 0.008795074758135445,
+        "fox_prop": 0.0006684491978609625
+    },
+    "endemic": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "epidemic": {
+        "conf lower bound": 0.0016779150884623979,
+        "conf upper bound": 0.0071171596696730476,
+        "cnn prop": 0.0043975373790677225,
+        "fox_prop": 0.0
+    },
+    "flattening the curve": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "herd immunity": {
+        "conf lower bound": -0.0006685063702442417,
+        "conf upper bound": 0.003729145353590039,
+        "cnn prop": 0.0021987686895338612,
+        "fox_prop": 0.0006684491978609625
+    },
+    "hydroxychloroquine": {
+        "conf lower bound": 3.6697091805437416e-05,
+        "conf upper bound": 0.0034813328114487404,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.0
+    },
+    "incubation period": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "infusion": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "n95 respirator": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "n95": {
+        "conf lower bound": -0.0001726383099742877,
+        "conf upper bound": 0.002811160737414921,
+        "cnn prop": 0.0013192612137203166,
+        "fox_prop": 0.0
+    },
+    "n95 mask": {
+        "conf lower bound": -0.00033889154746930407,
+        "conf upper bound": 0.0020979064990963928,
+        "cnn prop": 0.0008795074758135445,
+        "fox_prop": 0.0
+    },
+    "mask": {
+        "conf lower bound": -0.006306649754063675,
+        "conf upper bound": 0.01348145539231802,
+        "cnn prop": 0.0316622691292876,
+        "fox_prop": 0.02807486631016043
+    },
+    "outbreak": {
+        "conf lower bound": 0.00956861967284093,
+        "conf upper bound": 0.029057984722815143,
+        "cnn prop": 0.03869832893579595,
+        "fox_prop": 0.019385026737967916
+    },
+    "pandemic": {
+        "conf lower bound": 0.1267588653329514,
+        "conf upper bound": 0.1628072129573237,
+        "cnn prop": 0.1868953386103782,
+        "fox_prop": 0.042112299465240643
+    },
+    "paxlovid": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "pcr test": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "pcr": {
+        "conf lower bound": -0.0028387241382627207,
+        "conf upper bound": 0.00016492734681887076,
+        "cnn prop": 0.0,
+        "fox_prop": 0.001336898395721925
+    },
+    "personal protective equipment": {
+        "conf lower bound": 3.6697091805437416e-05,
+        "conf upper bound": 0.0034813328114487404,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.0
+    },
+    "ppe": {
+        "conf lower bound": 0.011950037782659698,
+        "conf upper bound": 0.02906934430454794,
+        "cnn prop": 0.032541776605101144,
+        "fox_prop": 0.012032085561497326
+    },
+    "pre-symptomatic": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "quarantine": {
+        "conf lower bound": -0.004202278626468927,
+        "conf upper bound": 0.007895504537605747,
+        "cnn prop": 0.011873350923482849,
+        "fox_prop": 0.010026737967914439
+    },
+    "remdesivir": {
+        "conf lower bound": 0.001084451586850325,
+        "conf upper bound": 0.00595160821965803,
+        "cnn prop": 0.003518029903254178,
+        "fox_prop": 0.0
+    },
+    "veklury": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "self-isolation": {
+        "conf lower bound": -0.00033889154746930407,
+        "conf upper bound": 0.0020979064990963928,
+        "cnn prop": 0.0008795074758135445,
+        "fox_prop": 0.0
+    },
+    "serology test": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "social distancing": {
+        "conf lower bound": 0.0024352201583933506,
+        "conf upper bound": 0.00942049358308789,
+        "cnn prop": 0.006596306068601583,
+        "fox_prop": 0.0006684491978609625
+    },
+    "state of emergency": {
+        "conf lower bound": -0.0001726383099742877,
+        "conf upper bound": 0.002811160737414921,
+        "cnn prop": 0.0013192612137203166,
+        "fox_prop": 0.0
+    },
+    "swab test": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "tocilizumab": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "actemra": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "trial": {
+        "conf lower bound": 0.001118204352418925,
+        "conf upper bound": 0.013199659996486864,
+        "cnn prop": 0.014511873350923483,
+        "fox_prop": 0.007352941176470588
+    },
+    "vaccine": {
+        "conf lower bound": -0.08080807978539013,
+        "conf upper bound": -0.03568903477163442,
+        "cnn prop": 0.15699208443271767,
+        "fox_prop": 0.21524064171122995
+    },
+    "variant": {
+        "conf lower bound": 0.015465662429327388,
+        "conf upper bound": 0.04194571661017518,
+        "cnn prop": 0.06948109058927,
+        "fox_prop": 0.04077540106951872
+    },
+    "ventilator": {
+        "conf lower bound": 0.0003239821429174769,
+        "conf upper bound": 0.008400543887211533,
+        "cnn prop": 0.007036059806508356,
+        "fox_prop": 0.00267379679144385
+    },
+    "viral load": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "viral shedding": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "viral test": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "hospital": {
+        "conf lower bound": 0.011018848809786822,
+        "conf upper bound": 0.03393950392444672,
+        "cnn prop": 0.051890941072999124,
+        "fox_prop": 0.029411764705882353
+    },
+    "surgery": {
+        "conf lower bound": -0.0011806516926311803,
+        "conf upper bound": 0.002482275724349888,
+        "cnn prop": 0.0013192612137203166,
+        "fox_prop": 0.0006684491978609625
+    },
+    "respirator": {
+        "conf lower bound": 0.0008013698540945409,
+        "conf upper bound": 0.00535518247660027,
+        "cnn prop": 0.0030782761653474055,
+        "fox_prop": 0.0
+    },
+    "emergency room": {
+        "conf lower bound": 3.6697091805437416e-05,
+        "conf upper bound": 0.0034813328114487404,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.0
+    },
+    "emergency": {
+        "conf lower bound": 0.011071554781887542,
+        "conf upper bound": 0.024847154270454908,
+        "cnn prop": 0.023306948109058926,
+        "fox_prop": 0.0053475935828877
+    },
+    "biden": {
+        "conf lower bound": -0.08545217760436644,
+        "conf upper bound": -0.05316666643120894,
+        "cnn prop": 0.051011433597185574,
+        "fox_prop": 0.12032085561497326
+    },
+    "trump": {
+        "conf lower bound": -0.016777849130313195,
+        "conf upper bound": 0.010370848815195547,
+        "cnn prop": 0.056288478452066845,
+        "fox_prop": 0.05949197860962567
+    },
+    "white house": {
+        "conf lower bound": -0.0181059849104926,
+        "conf upper bound": 0.0026240665494806463,
+        "cnn prop": 0.029023746701846966,
+        "fox_prop": 0.03676470588235294
+    },
+    "cdc": {
+        "conf lower bound": -0.01734366454308226,
+        "conf upper bound": 0.007243438316827784,
+        "cnn prop": 0.044415127528583995,
+        "fox_prop": 0.04946524064171123
+    },
+    "center for disease controlwho": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "world health organization": {
+        "conf lower bound": 0.008502940508002491,
+        "conf upper bound": 0.017882283766403842,
+        "cnn prop": 0.013192612137203167,
+        "fox_prop": 0.0
+    },
+    "shutdown": {
+        "conf lower bound": -0.004514742170025178,
+        "conf upper bound": 0.0013482800946697311,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.0033422459893048127
+    },
+    "lockdown": {
+        "conf lower bound": -0.008192914673014834,
+        "conf upper bound": 0.0068548404651594666,
+        "cnn prop": 0.016710642040457344,
+        "fox_prop": 0.017379679144385027
+    },
+    "restrictions": {
+        "conf lower bound": -0.004813370265843796,
+        "conf upper bound": 0.012199822088117436,
+        "cnn prop": 0.023746701846965697,
+        "fox_prop": 0.020053475935828877
+    },
+    "democrat": {
+        "conf lower bound": -0.010213548664980872,
+        "conf upper bound": 0.0036337039662474513,
+        "cnn prop": 0.012752858399296393,
+        "fox_prop": 0.016042780748663103
+    },
+    "republican": {
+        "conf lower bound": -0.005966561969372069,
+        "conf upper bound": 0.008639182948682477,
+        "cnn prop": 0.016710642040457344,
+        "fox_prop": 0.01537433155080214
+    },
+    "gop": {
+        "conf lower bound": -0.020517713018616594,
+        "conf upper bound": -0.008120367303461863,
+        "cnn prop": 0.0043975373790677225,
+        "fox_prop": 0.01871657754010695
+    },
+    "senate": {
+        "conf lower bound": -0.008667826589493013,
+        "conf upper bound": 0.0013848462349621404,
+        "cnn prop": 0.005716798592788039,
+        "fox_prop": 0.009358288770053475
+    },
+    "house": {
+        "conf lower bound": -0.019768788431799477,
+        "conf upper bound": 0.0052004760984708485,
+        "cnn prop": 0.044854881266490766,
+        "fox_prop": 0.05213903743315508
+    },
+    "house of representatives": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "harris": {
+        "conf lower bound": -0.009963713553065572,
+        "conf upper bound": -0.001681529816529811,
+        "cnn prop": 0.0021987686895338612,
+        "fox_prop": 0.008021390374331552
+    },
+    "pelosi": {
+        "conf lower bound": -0.008810277779638817,
+        "conf upper bound": -0.0006185597184210929,
+        "cnn prop": 0.002638522427440633,
+        "fox_prop": 0.007352941176470588
+    },
+    "romney": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "sanders": {
+        "conf lower bound": -0.002628634000730114,
+        "conf upper bound": 0.000834344685099808,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.001336898395721925
+    },
+    "boris johnson": {
+        "conf lower bound": -0.0012870297597200617,
+        "conf upper bound": 0.003890277823157478,
+        "cnn prop": 0.002638522427440633,
+        "fox_prop": 0.001336898395721925
+    },
+    "cuomo": {
+        "conf lower bound": -0.03898442523770696,
+        "conf upper bound": -0.0222318818656093,
+        "cnn prop": 0.006156552330694811,
+        "fox_prop": 0.03676470588235294
+    },
+    "fox": {
+        "conf lower bound": -0.018554204521649572,
+        "conf upper bound": -0.008219037756792148,
+        "cnn prop": 0.0013192612137203166,
+        "fox_prop": 0.014705882352941176
+    },
+    "cnn": {
+        "conf lower bound": 0.049987637593972054,
+        "conf upper bound": 0.07606177473512367,
+        "cnn prop": 0.08575197889182058,
+        "fox_prop": 0.022727272727272728
+    },
+    "fauci": {
+        "conf lower bound": -0.021842056619693538,
+        "conf upper bound": -0.0019775455795454696,
+        "cnn prop": 0.024186455584872472,
+        "fox_prop": 0.03609625668449198
+    },
+    "pence": {
+        "conf lower bound": -0.0028709723026367935,
+        "conf upper bound": 0.006247904749878104,
+        "cnn prop": 0.007036059806508356,
+        "fox_prop": 0.0053475935828877
+    },
+    "abbott": {
+        "conf lower bound": -0.007396885387053488,
+        "conf upper bound": 0.0014860777922477567,
+        "cnn prop": 0.0043975373790677225,
+        "fox_prop": 0.007352941176470588
+    },
+    "airport": {
+        "conf lower bound": -0.00039088907797414077,
+        "conf upper bound": 0.004331035537133482,
+        "cnn prop": 0.002638522427440633,
+        "fox_prop": 0.0006684491978609625
+    },
+    "bus": {
+        "conf lower bound": 0.004196009545007565,
+        "conf upper bound": 0.01758003116631174,
+        "cnn prop": 0.018909410729991204,
+        "fox_prop": 0.008021390374331552
+    },
+    "public transportation": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "ship": {
+        "conf lower bound": -0.00035294939289375743,
+        "conf upper bound": 0.013263366618071187,
+        "cnn prop": 0.017150395778364115,
+        "fox_prop": 0.0106951871657754
+    },
+    "cruise": {
+        "conf lower bound": 0.001446907980770665,
+        "conf upper bound": 0.007770283333269942,
+        "cnn prop": 0.005277044854881266,
+        "fox_prop": 0.0006684491978609625
+    },
+    "airplane": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "airline": {
+        "conf lower bound": 0.0013008249117391598,
+        "conf upper bound": 0.01048434010173565,
+        "cnn prop": 0.009234828496042216,
+        "fox_prop": 0.0033422459893048127
+    },
+    "usa": {
+        "conf lower bound": -0.0019208839852109206,
+        "conf upper bound": 0.010469038195323847,
+        "cnn prop": 0.013632365875109938,
+        "fox_prop": 0.009358288770053475
+    },
+    "united_states": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "new york": {
+        "conf lower bound": 0.00843979761437369,
+        "conf upper bound": 0.02673932560603464,
+        "cnn prop": 0.03430079155672823,
+        "fox_prop": 0.016711229946524065
+    },
+    "rhode island": {
+        "conf lower bound": -0.00033889154746930407,
+        "conf upper bound": 0.0020979064990963928,
+        "cnn prop": 0.0008795074758135445,
+        "fox_prop": 0.0
+    },
+    "massachusetts": {
+        "conf lower bound": -0.003648149938384571,
+        "conf upper bound": 0.0018185862587510484,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.00267379679144385
+    },
+    "california": {
+        "conf lower bound": -0.019165619171883273,
+        "conf upper bound": -0.0038791228314184094,
+        "cnn prop": 0.011873350923482849,
+        "fox_prop": 0.02339572192513369
+    },
+    "texas": {
+        "conf lower bound": -0.02752184575293494,
+        "conf upper bound": -0.010264052967311142,
+        "cnn prop": 0.013192612137203167,
+        "fox_prop": 0.03208556149732621
+    },
+    "boston": {
+        "conf lower bound": -0.00010270113722021714,
+        "conf upper bound": 0.004922355072193103,
+        "cnn prop": 0.0030782761653474055,
+        "fox_prop": 0.0006684491978609625
+    },
+    "los angeles": {
+        "conf lower bound": -0.007396885387053488,
+        "conf upper bound": 0.0014860777922477567,
+        "cnn prop": 0.0043975373790677225,
+        "fox_prop": 0.007352941176470588
+    },
+    "connecticut": {
+        "conf lower bound": -0.0015965660351138374,
+        "conf upper bound": 0.0011391751152054568,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0006684491978609625
+    },
+    "pennsylvania": {
+        "conf lower bound": -0.0023912928669819165,
+        "conf upper bound": 0.0014765110271651551,
+        "cnn prop": 0.0008795074758135445,
+        "fox_prop": 0.001336898395721925
+    },
+    "georgia": {
+        "conf lower bound": 0.000789515014905191,
+        "conf upper bound": 0.0083924019351322,
+        "cnn prop": 0.006596306068601583,
+        "fox_prop": 0.002005347593582888
+    },
+    "atlanta": {
+        "conf lower bound": -0.0021345322549228907,
+        "conf upper bound": 0.0020992578909196733,
+        "cnn prop": 0.0013192612137203166,
+        "fox_prop": 0.001336898395721925
+    },
+    "uk": {
+        "conf lower bound": 0.0013386077430984859,
+        "conf upper bound": 0.02008468932818866,
+        "cnn prop": 0.03210202286719437,
+        "fox_prop": 0.0213903743315508
+    },
+    "united kingdom": {
+        "conf lower bound": 0.0016779150884623979,
+        "conf upper bound": 0.0071171596696730476,
+        "cnn prop": 0.0043975373790677225,
+        "fox_prop": 0.0
+    },
+    "germany": {
+        "conf lower bound": -0.0009862187751702013,
+        "conf upper bound": 0.004468974314421162,
+        "cnn prop": 0.0030782761653474055,
+        "fox_prop": 0.001336898395721925
+    },
+    "australia": {
+        "conf lower bound": -0.0027892477778107775,
+        "conf upper bound": 0.005744063669146924,
+        "cnn prop": 0.006156552330694811,
+        "fox_prop": 0.004679144385026738
+    },
+    "china": {
+        "conf lower bound": -1.897599421810635e-05,
+        "conf upper bound": 0.017959517526254284,
+        "cnn prop": 0.029023746701846966,
+        "fox_prop": 0.020053475935828877
+    },
+    "beijing": {
+        "conf lower bound": 0.001446907980770665,
+        "conf upper bound": 0.007770283333269942,
+        "cnn prop": 0.005277044854881266,
+        "fox_prop": 0.0006684491978609625
+    },
+    "taiwan": {
+        "conf lower bound": -0.00039088907797414077,
+        "conf upper bound": 0.004331035537133482,
+        "cnn prop": 0.002638522427440633,
+        "fox_prop": 0.0006684491978609625
+    },
+    "wuhan": {
+        "conf lower bound": 0.002490023170727958,
+        "conf upper bound": 0.017843296052859774,
+        "cnn prop": 0.022867194371152155,
+        "fox_prop": 0.01270053475935829
+    },
+    "japan": {
+        "conf lower bound": 0.004687411082602972,
+        "conf upper bound": 0.014169088101383408,
+        "cnn prop": 0.011433597185576077,
+        "fox_prop": 0.002005347593582888
+    },
+    "india": {
+        "conf lower bound": 0.0107116742282538,
+        "conf upper bound": 0.024749643904180267,
+        "cnn prop": 0.023746701846965697,
+        "fox_prop": 0.006016042780748663
+    },
+    "tokyo": {
+        "conf lower bound": 0.0017725284143206852,
+        "conf upper bound": 0.008324170375533468,
+        "cnn prop": 0.005716798592788039,
+        "fox_prop": 0.0006684491978609625
+    },
+    "south africa": {
+        "conf lower bound": -0.0017202626510957018,
+        "conf upper bound": 0.007313600969872481,
+        "cnn prop": 0.007475813544415127,
+        "fox_prop": 0.004679144385026738
+    },
+    "south korea": {
+        "conf lower bound": 0.0004986094061038356,
+        "conf upper bound": 0.00608005948049614,
+        "cnn prop": 0.00395778364116095,
+        "fox_prop": 0.0006684491978609625
+    },
+    "north korea": {
+        "conf lower bound": -0.002628634000730114,
+        "conf upper bound": 0.000834344685099808,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.001336898395721925
+    },
+    "vietnam": {
+        "conf lower bound": 0.001084451586850325,
+        "conf upper bound": 0.00595160821965803,
+        "cnn prop": 0.003518029903254178,
+        "fox_prop": 0.0
+    },
+    "eu": {
+        "conf lower bound": 0.014979806158216036,
+        "conf upper bound": 0.03469355323111417,
+        "cnn prop": 0.04221635883905013,
+        "fox_prop": 0.017379679144385027
+    },
+    "european union": {
+        "conf lower bound": 0.0004986094061038356,
+        "conf upper bound": 0.00608005948049614,
+        "cnn prop": 0.00395778364116095,
+        "fox_prop": 0.0006684491978609625
+    },
+    "russia": {
+        "conf lower bound": -0.0018537177432084114,
+        "conf upper bound": 0.003999574886737446,
+        "cnn prop": 0.0030782761653474055,
+        "fox_prop": 0.002005347593582888
+    },
+    "britain": {
+        "conf lower bound": -0.002468776557687734,
+        "conf upper bound": 0.0028556187495896806,
+        "cnn prop": 0.0021987686895338612,
+        "fox_prop": 0.002005347593582888
+    },
+    "stock": {
+        "conf lower bound": 0.0008093552259050142,
+        "conf upper bound": 0.006648821136508505,
+        "cnn prop": 0.0043975373790677225,
+        "fox_prop": 0.0006684491978609625
+    },
+    "supply chain": {
+        "conf lower bound": -0.00033889154746930407,
+        "conf upper bound": 0.0020979064990963928,
+        "cnn prop": 0.0008795074758135445,
+        "fox_prop": 0.0
+    },
+    "inflation": {
+        "conf lower bound": -0.0018630222519616247,
+        "conf upper bound": 0.0027072553637719522,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.001336898395721925
+    },
+    "deflation": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "market": {
+        "conf lower bound": 0.0027716009900480903,
+        "conf upper bound": 0.009963620227246697,
+        "cnn prop": 0.007036059806508356,
+        "fox_prop": 0.0006684491978609625
+    },
+    "wall street": {
+        "conf lower bound": 3.6697091805437416e-05,
+        "conf upper bound": 0.0034813328114487404,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.0
+    },
+    "economy": {
+        "conf lower bound": 0.0014809964449602996,
+        "conf upper bound": 0.009459935456704179,
+        "cnn prop": 0.007475813544415127,
+        "fox_prop": 0.002005347593582888
+    },
+    "currency": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "commerce": {
+        "conf lower bound": -0.0004219740518678585,
+        "conf upper bound": 0.001301481527681403,
+        "cnn prop": 0.00043975373790677223,
+        "fox_prop": 0.0
+    },
+    "pfizer": {
+        "conf lower bound": -0.006608188132815477,
+        "conf upper bound": 0.01086345224373689,
+        "cnn prop": 0.024186455584872472,
+        "fox_prop": 0.022058823529411766
+    },
+    "moderna": {
+        "conf lower bound": -0.007943316109324035,
+        "conf upper bound": 0.005796283153661558,
+        "cnn prop": 0.013632365875109938,
+        "fox_prop": 0.014705882352941176
+    },
+    "jnjjohnson and johnson": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "booster": {
+        "conf lower bound": -0.022061720089958277,
+        "conf upper bound": -0.005908498940325942,
+        "cnn prop": 0.012752858399296393,
+        "fox_prop": 0.026737967914438502
+    },
+    "dose": {
+        "conf lower bound": 0.01022517222812769,
+        "conf upper bound": 0.028085138703632877,
+        "cnn prop": 0.03386103781882146,
+        "fox_prop": 0.014705882352941176
+    },
+    "first dose": {
+        "conf lower bound": -0.0006685063702442417,
+        "conf upper bound": 0.003729145353590039,
+        "cnn prop": 0.0021987686895338612,
+        "fox_prop": 0.0006684491978609625
+    },
+    "second dose": {
+        "conf lower bound": -0.0027657244560613647,
+        "conf upper bound": 0.0022730591721497667,
+        "cnn prop": 0.001759014951627089,
+        "fox_prop": 0.002005347593582888
+    },
+    "research": {
+        "conf lower bound": 0.020009427218016497,
+        "conf upper bound": 0.03736902908174975,
+        "cnn prop": 0.03737906772207564,
+        "fox_prop": 0.008689839572192513
+    },
+    "omicron": {
+        "conf lower bound": -0.004279891230017768,
+        "conf upper bound": 0.01339008363991529,
+        "cnn prop": 0.025945470536499562,
+        "fox_prop": 0.0213903743315508
+    },
+    "delta": {
+        "conf lower bound": 0.007123671078216438,
+        "conf upper bound": 0.0229195047433235,
+        "cnn prop": 0.026385224274406333,
+        "fox_prop": 0.011363636363636364
+    },
+    "positive": {
+        "conf lower bound": -0.014634626440515563,
+        "conf upper bound": 0.010655678180952682,
+        "cnn prop": 0.048812664907651716,
+        "fox_prop": 0.05080213903743316
+    },
+    "negative": {
+        "conf lower bound": -0.008188789711218801,
+        "conf upper bound": 0.0009410837206911436,
+        "cnn prop": 0.0043975373790677225,
+        "fox_prop": 0.008021390374331552
+    },
+    "cough": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "vomit": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "headache": {
+        "conf lower bound": -0.0014054166852479968,
+        "conf upper bound": 0.001827533241153161,
+        "cnn prop": 0.0008795074758135445,
+        "fox_prop": 0.0006684491978609625
+    },
+    "nausea": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "chirstian": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "religion": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "religious": {
+        "conf lower bound": 0.001446907980770665,
+        "conf upper bound": 0.007770283333269942,
+        "cnn prop": 0.005277044854881266,
+        "fox_prop": 0.0006684491978609625
+    },
+    "bible": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "fake news": {
+        "conf lower bound": -0.0001726383099742877,
+        "conf upper bound": 0.002811160737414921,
+        "cnn prop": 0.0013192612137203166,
+        "fox_prop": 0.0
+    },
+    "death": {
+        "conf lower bound": 0.004335414233870972,
+        "conf upper bound": 0.028942420766763954,
+        "cnn prop": 0.055408970976253295,
+        "fox_prop": 0.03877005347593583
+    },
+    "casualty": {
+        "conf lower bound": 0.0,
+        "conf upper bound": 0.0,
+        "cnn prop": 0.0,
+        "fox_prop": 0.0
+    },
+    "death toll": {
+        "conf lower bound": -0.002510810137527796,
+        "conf upper bound": 0.00676725006058265,
+        "cnn prop": 0.007475813544415127,
+        "fox_prop": 0.0053475935828877
+    }
 }

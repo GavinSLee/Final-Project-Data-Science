@@ -37,12 +37,7 @@ def two_sample_ttest(values_a, values_b):
     # to get the t-statistic and the p-value
     # Note: Be sure to make the function call in a way such that the code will disregard
     # null (nan) values. Additionally, you can assume equal variance.
-    tstats, pvalue = ttest_ind(values_a, values_b)
-
-    # TODO: You can print out the tstats, pvalue, and other necessary
-    # calculations to determine your answer to the questions
-    print("tstats: ", tstats)
-    print("p value: ", pvalue)
+    tstats, pvalue = ttest_ind(values_a, values_b, nan_policy = 'omit')
 
     # and then we'll return tstats and pvalue
     return tstats, pvalue
@@ -78,17 +73,21 @@ def hypothesis_one():
     """
     cnn_tweets_list = load_json("../data_clean/cnn_tweets_clean.json")
     fox_tweets_list = load_json("../data_clean/fox_tweets_clean.json")
-    ci_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "cuomo": [], "abbott": [], "fauci": []}
-    prop_dict = {"trump": [], "pence": [], "biden": [], "harris": [], "cuomo": [], "abbott": [], "fauci": []}
 
-    for term in ci_dict:
+    hyp_one_dict = {} 
+
+    for term in terms:
         metrics = get_ci_range(term, cnn_tweets_list, fox_tweets_list)     
-        conf_int = metrics[0] 
+        conf_bound = metrics[0] 
+        conf_lower_bound = conf_bound[0] 
+        conf_upper_bound = conf_bound[1] 
         props = metrics[1] 
-        ci_dict[term] = conf_int 
-        prop_dict[term] = props 
+        cnn_prop = props[0] 
+        fox_prop = props[1] 
 
-    return [ci_dict, prop_dict] 
+        hyp_one_dict[term] = {"conf lower bound" : conf_lower_bound, "conf upper bound": conf_upper_bound, "cnn prop" : cnn_prop, "fox_prop" : fox_prop}
+
+    save_json("../data_hypotheses/hypothesis_1.json", hyp_one_dict)
 
 def get_ci_range(word, cnn_tweets_list, fox_tweets_list):
 
@@ -136,31 +135,50 @@ def calc_ci_range(p1, n1, p2, n2):
 
 
 def hypothesis_two():
-    """
-    We want to determine the average sentiment of reply tweets for certain covid keywords differs between Fox & CNN. 
-    """
 
     cnn_tweets = load_json("../data_clean/cnn_tweets_clean.json")
-    cnn_replies = load_json("../data_clean/fox_tweets_clean.json") 
+    cnn_replies = load_json("../data_clean/cnn_replies_clean.json") 
 
     fox_tweets = load_json("../data_clean/fox_tweets_clean.json") 
     fox_replies = load_json("../data_clean/fox_replies_clean.json") 
 
+    hyp_two_dict = {} 
+
+    for keyword in terms:
+        tstats, p_value, cnn_avg_sentiment, fox_avg_sentiment = calculate_ttest_metrics(keyword, cnn_tweets, cnn_replies, fox_tweets, fox_replies) 
+        metrics_dict = {"tstats": 0, "p-value": 0, "cnn_avg_sentiment": 0, "fox_avg_sentiment": 0}
+        metrics_dict["tstats"] = tstats 
+        metrics_dict["p-value"] = p_value 
+        metrics_dict["cnn_avg_sentiment"] = cnn_avg_sentiment
+        metrics_dict["fox_avg_sentiment"] = fox_avg_sentiment 
+        hyp_two_dict[keyword] = metrics_dict
+
+    save_json("../data_hypotheses/hypothesis_2.json", hyp_two_dict)
     
-    # First, get replies that correspond to the list of covid keywords that we want
-    keywords_subset = {"mask"}
-    cnn_replies_sublist = get_sublist_replies(keywords_subset, cnn_tweets, cnn_replies) 
-    fox_replies_sublist = get_sublist_replies(keywords_subset, fox_tweets, fox_replies) 
+
+def calculate_ttest_metrics(keyword, cnn_tweets, cnn_replies, fox_tweets, fox_replies):
+    """
+    We want to determine the average sentiment of reply tweets for certain covid keywords differs between Fox & CNN. 
+    """
+
+    cnn_replies_sublist = get_sublist_replies(keyword, cnn_tweets, cnn_replies) 
+    fox_replies_sublist = get_sublist_replies(keyword, fox_tweets, fox_replies) 
 
     cnn_sentiment_scores = get_sentiment_scores_list(cnn_replies_sublist) 
     fox_sentiment_scores = get_sentiment_scores_list(fox_replies_sublist) 
-    # print(cnn_sentiment_scores)
-    # print(fox_sentiment_scores)
+    
+    cnn_avg_sentiment = 0 
+    fox_avg_sentiment = 0 
 
+    if len(cnn_sentiment_scores) > 0:
+        cnn_avg_sentiment = sum(cnn_sentiment_scores) / len(cnn_sentiment_scores) 
+    if len(fox_sentiment_scores) > 0:
+        fox_avg_sentiment = sum(fox_sentiment_scores) / len(fox_sentiment_scores) 
+    
     tstats, p_value = two_sample_ttest(cnn_sentiment_scores, fox_sentiment_scores) 
+    return tstats, p_value, cnn_avg_sentiment, fox_avg_sentiment
 
-
-def get_sublist_replies(covid_keywords_set, tweets, replies):
+def get_sublist_replies(keyword, tweets, replies):
     # First, iterate through tweets and see if it contains one of the covid keywords. If it does, append the tweet id to a list of tweet_ids.
 
     tweet_ids_set = set() 
@@ -168,10 +186,8 @@ def get_sublist_replies(covid_keywords_set, tweets, replies):
     for tweet in tweets:
         keywords = tweet["keywords"]
         tweet_id = tweet["id"]
-        for keyword in keywords:
-            if keyword in covid_keywords_set: 
-                tweet_ids_set.add(tweet_id) 
-                break 
+        if keyword in keywords:
+            tweet_ids_set.add(tweet_id)
     
     reply_subset = [] 
     # Then, get subset of replies in which the reply has a conversation ID that matches one of the keys in the tweet_ids_set
@@ -216,7 +232,7 @@ def hypothesis_three():
                 has_keyword_list.append(1)
             else:
                 has_keyword_list.append(0)
-            if tweet_virality(tweet) >= 800:
+            if tweet_virality(tweet) >= MIN_VIRAL:
                 is_viral.append(1)
             else:
                 is_viral.append(0)
@@ -245,7 +261,7 @@ For each keyword, Calculate number of posts per each range that contained that s
 def keywords_with_virality():
     cnn_tweets_read_path = "../data_clean/cnn_tweets_clean.json"
     fox_tweets_read_path = "../data_clean/fox_tweets_clean.json"
-    out_path = "../data_clean/keywords_viralities.json"
+    out_path = "../data_hypotheses/keywords_viralities.json"
     all_tweets = load_json(cnn_tweets_read_path) + load_json(fox_tweets_read_path)
     keywords_with_viralities = {}
     for keyword in terms:
@@ -271,7 +287,7 @@ Are there certain months in which tweeting with a certain COVID keyword will lea
 def keywords_with_virality_per_month():
     cnn_tweets_read_path = "../data_clean/cnn_tweets_clean.json"
     fox_tweets_read_path = "../data_clean/fox_tweets_clean.json"
-    out_path = "../data_clean/keywords_viralities_per_month.json"
+    out_path = "../data_hypotheses/keywords_viralities_per_month.json"
     months_2020 = ["January 2020", "February 2020", "March 2020", "April 2020", "May 2020", "June 2020", "July 2020", "August 2020", "September 2020", "October 2020", "November 2020", "December 2020"]
     months_2021 = ["January 2021", "February 2021", "March 2021", "April 2021", "May 2021", "June 2021", "July 2021", "August 2021", "September 2021", "October 2021", "November 2021", "December 2021"]
     months = months_2020 + months_2021
@@ -298,11 +314,29 @@ def keywords_with_virality_per_month():
         result[keyword] = data
     save_json(out_path, result)
 
+def calculate_avg_virality_prop():
+    viralities_path = "../data_hypotheses/keywords_viralities.json"
+    viralities_dict = load_json(viralities_path) 
+
+    for keyword in viralities_dict:
+        keyword_dict = viralities_dict[keyword] 
+        count = 0 
+        for viral_range in keyword_dict:
+            count += keyword_dict[viral_range] 
+        
+        viral_prop = keyword_dict["800+"] / count 
+        keyword_dict["viral_prop"] = viral_prop 
+    
+    save_json(viralities_path, viralities_dict)
+
+
 def main():
 
-    # hyp_one_result = hypothesis_one() 
+    hyp_one_result = hypothesis_one() 
     # hyp_two_result = hypothesis_two() 
-    hyp_three_result = hypothesis_three()  
+    # keywords_with_virality_per_month() 
+    # calculate_avg_virality_prop() 
+    # keywords_with_virality() 
 
 
 if __name__ == "__main__":
