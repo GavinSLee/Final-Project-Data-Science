@@ -218,8 +218,8 @@ def visualization_one_hyp():
 
 
     plt.figure(figsize = (10, 16))
-    plt.bar(x_axis - 0.2, cnn_proportions, 0.4, label = 'CNN Proportions', color = 'red')
-    plt.bar(x_axis + 0.2, fox_proportions, 0.4, label = 'Fox Proportions', color = 'blue')
+    plt.bar(x_axis - 0.2, cnn_proportions, 0.4, label = 'CNN Proportion', color = 'red')
+    plt.bar(x_axis + 0.2, fox_proportions, 0.4, label = 'Fox Proportion', color = 'blue')
     plt.xticks(x_axis, keywords)
     plt.xlabel("keywords")
     plt.ylabel("proportion")
@@ -251,6 +251,9 @@ def visualization_two_hyp():
 
 ############# Visualization for Hypothesis Three #############
 
+def visualization_three_hyp():
+    pass 
+
 
 
 
@@ -259,8 +262,8 @@ def visualization_two_hyp():
 
 
 def main():
-    # visualization_one_hyp() 
-    visualization_two_hyp() 
+    visualization_one_hyp() 
+    # visualization_two_hyp() 
 
 if __name__ == "__main__":
     main() 
