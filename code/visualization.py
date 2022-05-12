@@ -229,12 +229,38 @@ def visualization_one_hyp():
     plt.show() 
 
 
+############# Visualization for Hypothesis Two #############
+def visualization_two_hyp():
+
+    types = ['trump', 'biden', 'fauci', 'democrat', 'republican', 'vaccine', 'mask', 'lockdown', 'quarantine', 'cuomo', 'abbott']
+    x_coords = [-0.38, -0.24, -0.29, -0.33, -0.38, -0.242, -0.313, -0.252, -0.259, -0.340, -0.308]
+    y_coords = [-0.34, -0.31, -0.33, -0.34, -0.406, -0.263, -0.295, -0.403, -0.285, -0.340, -0.289]
+
+    plt.figure(figsize = (10, 10))
+    for i,type in enumerate(types):
+        x = x_coords[i]
+        y = y_coords[i]
+        plt.scatter(x, y, marker='o', color='blue')
+        plt.text(x+0.3, y+0.3, type, fontsize=9)
+        plt.annotate(type, (x, y), xytext = (x - .003, y + .002)) 
+
+    plt.xlabel("CNN Average Sentiment Score")
+    plt.ylabel("Fox Average Sentiment Score")
+    plt.title("Scatter Plot of Average Sentiment Score for Various Keywords for Fox and CNN")
+    plt.show()
+
+############# Visualization for Hypothesis Three #############
+
+
+
+
 
 ############# Main #############
 
 
 def main():
-    visualization_one_hyp() 
+    # visualization_one_hyp() 
+    visualization_two_hyp() 
 
 if __name__ == "__main__":
     main() 
